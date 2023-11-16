@@ -7,8 +7,8 @@ const JUMP_VELOCITY = -900.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-# I need to set the position of the player to a variable to determine enemy behaviour.
-var playerLocation = position.x
+# I need to set the position of the player to a variable to determine enemy behaviour. To do so we must access our singleton.
+@onready var playerVars = get_node("/root/PlayerAutoload")
 
 
 func _physics_process(delta):
@@ -16,8 +16,6 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		
-	playerLocation = position.x
-
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -30,4 +28,21 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
+	move_and_slide()
+	print(direction)
+	
+	# Need to update position variable.
+	playerVars.playerLocation = position.x
+	
+
+# This function is going to make it so whenever the player touches an enemy, their health goes down.
+func _on_player_damage_radius_body_entered(body):
+		if body.is_in_group("Enemy"):
+			playerVars.health -= 1
+			knockback()
+			print(playerVars.health)
+
+# We also want knockback.
+func knockback():
+	velocity.y = -400
 	move_and_slide()

@@ -15,6 +15,10 @@ run/main_scene="res://test_scenes/sites/test_background.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+PlayerAutoload="*res://test_scenes/player/player_autoload.tscn"
+
 [input]
 
 walk_right={
