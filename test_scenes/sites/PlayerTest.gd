@@ -10,39 +10,64 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 # I need to set the position of the player to a variable to determine enemy behaviour. To do so we must access our singleton.
 @onready var playerVars = get_node("/root/PlayerAutoload")
 
+# We need to set up our variable to trigger the invincibility timer.
+@onready var invincibilityTimer = get_node("InvincibilityTimer")
 
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-		
+
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+	
+	if playerVars.state == "attacked":
+		invincibilityTimer.start()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("walk_left", "walk_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+#	var direction = Input.get_axis("walk_left", "walk_right")
+	
+	# These make the player move when A or D (or the arrow keys) are pressed.
+	
+	if Input.is_action_pressed("walk_left") && Input.is_action_pressed("walk_right"):
+		velocity.x = 0
+		playerVars.state = "walking"
+	elif Input.is_action_pressed("walk_left"):
+		velocity.x = -SPEED
+		playerVars.state = "walking"
+	elif Input.is_action_pressed("walk_right"):
+		velocity.x = SPEED
+		playerVars.state = "walking"
+		
+	if Input.is_action_just_released("walk_left") || Input.is_action_just_released("walk_right"):
+		velocity.x = 0
+		playerVars.state = "idle"
+		
+		
+	print(playerVars.state)
+	#if direction:
+	#	velocity.x = direction * SPEED
+	#else:
+	#	velocity.x = 0
+	#	velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-	print(direction)
-	
+
 	# Need to update position variable.
-	playerVars.playerLocation = position.x
+	playerVars.location = position.x
+
+	
 	
 
 # This function is going to make it so whenever the player touches an enemy, their health goes down.
 func _on_player_damage_radius_body_entered(body):
 		if body.is_in_group("Enemy"):
 			playerVars.health -= 1
-			knockback()
-			print(playerVars.health)
+			
 
-# We also want knockback.
-func knockback():
-	velocity.y = -400
-	move_and_slide()
+
+func _on_invincibility_timer_timeout():
+	velocity.x = 0
+	playerVars.state = "idle"

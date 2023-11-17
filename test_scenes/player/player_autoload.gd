@@ -4,12 +4,22 @@ extends Node
 var health = 10
 var maxHealth = 10
 
+# Creating a damage variable for later.
+var damage = 1
+
 # This is to determine enemy behaviour.
-var playerLocation = 0
+var location = 0
+
+# This variable will affect our knockback. Enemies will change it when they collide with the player.
+var knockback = Vector2()
+
+# I want to make a state machine to control animations and knockback amongst other things.
+var state = "idle"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,3 +29,4 @@ func _process(_delta):
 		health = maxHealth
 	elif health < 0:
 		health = 0
+		

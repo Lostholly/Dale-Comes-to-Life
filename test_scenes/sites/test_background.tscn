@@ -41,7 +41,7 @@ autostart = true
 position = Vector2(-1, 2.5)
 shape = SubResource("RectangleShape2D_0ihm6")
 
-[node name="PlayerTest" type="CharacterBody2D" parent="."]
+[node name="PlayerTest" type="CharacterBody2D" parent="." groups=["Player"]]
 position = Vector2(873, 548)
 script = ExtResource("2_4tmjy")
 metadata/_edit_group_ = true
@@ -60,5 +60,11 @@ shape = SubResource("CapsuleShape2D_0pxkl")
 [node name="DamageShape" type="CollisionShape2D" parent="PlayerTest/PlayerDamageRadius"]
 shape = SubResource("CapsuleShape2D_fa0yv")
 
+[node name="InvincibilityTimer" type="Timer" parent="PlayerTest"]
+process_callback = 0
+wait_time = 0.755
+one_shot = true
+
 [connection signal="timeout" from="EnemyTest/EnemyTimer" to="EnemyTest" method="_on_enemy_timer_timeout"]
 [connection signal="body_entered" from="PlayerTest/PlayerDamageRadius" to="PlayerTest" method="_on_player_damage_radius_body_entered"]
+[connection signal="timeout" from="PlayerTest/InvincibilityTimer" to="PlayerTest" method="_on_invincibility_timer_timeout"]

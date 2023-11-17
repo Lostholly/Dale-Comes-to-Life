@@ -1,6 +1,6 @@
-res://test_scenes/sites/test_background.tscn
+res://test_scenes/player/player_autoload.tscn
 res://test_scenes/sites/test_background.tres
 res://test_scenes/sites/EnemyTest.gd
-res://test_scenes/player/player_autoload.tscn
-res://test_scenes/sites/PlayerTest.gd
 res://test_scenes/player/player_autoload.gd
+res://test_scenes/sites/PlayerTest.gd
+res://test_scenes/sites/test_background.tscn

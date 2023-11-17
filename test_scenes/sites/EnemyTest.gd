@@ -21,6 +21,8 @@ func enemy_jump():
 var enemyPosition = position.x
 
 
+
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -35,9 +37,9 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	# So this tells the enemy it's on a wall and makes it turn around.
-	if enemyPosition > playerVars.playerLocation:
+	if enemyPosition > playerVars.location:
 		direction = -1
-	elif enemyPosition < playerVars.playerLocation:
+	elif enemyPosition < playerVars.location:
 		direction = 1
 
 
