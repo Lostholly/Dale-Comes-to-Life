@@ -21,7 +21,8 @@ func enemy_jump():
 var enemyPosition = position
 
 # We need a relative variable to determine the position of the enemy compared to the player as well.
-var relativePosition = ""
+var relativePositionX = ""
+var relativePositionY = ""
 
 # We need our variables for animations.
 var state = "idle"
@@ -44,12 +45,18 @@ func _physics_process(delta):
 	
 	# This makes the enemy follow the player. This is also used to track the position relative to the player for knockback.
 	if aware == true:
-		if enemyPosition.x > playerVars.location:
+		if enemyPosition.x > playerVars.location.x:
 			direction = -1
-			relativePosition = "right"
-		elif enemyPosition.x < playerVars.location:
+			relativePositionX = "right"
+		elif enemyPosition.x < playerVars.location.x:
 			direction = 1
-			relativePosition = "left"
+			relativePositionX = "left"
+	
+	# We are also going to track the relative position to see if the enemy is higher than the player.
+	if enemyPosition.y > playerVars.location.y:
+		relativePositionY = "below"
+	elif enemyPosition.y < playerVars.location.y:
+		relativePositionY = "above"
 	
 	if aware == false && is_on_wall():
 		direction = -direction
@@ -60,7 +67,7 @@ func _physics_process(delta):
 	else:
 		state = "walking"
 	
-	print(relativePosition)
+#	print(relativePositionY)
 
 
 
@@ -74,11 +81,17 @@ func _on_enemy_timer_timeout():
 
 	# This will control our knockback.
 func _on_enemy_attack_radius_body_entered(body):
-	pass
-	#if body.is_in_group("Player"):
-	#	var X = 0.0
-	#	var Y = 0.0
-	#	playerVars.knockbackPower = Vector2(X, Y)
+	if body.is_in_group("Player"):
+		if relativePositionY == "above":
+			if relativePositionX == "right":
+				playerVars.knockback = Vector2(-500, 500)
+			if relativePositionX == "left":
+				playerVars.knockback = Vector2(500, 500)
+		if relativePositionY == "below":
+			if relativePositionX == "right":
+				playerVars.knockback = Vector2(-500, -500)
+			if relativePositionX == "left":
+				playerVars.knockback = Vector2(500, -500)
 
 	# This will control if the enemy sees the player.
 func _on_enemy_detection_radius_body_entered(body):

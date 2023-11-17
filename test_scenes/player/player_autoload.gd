@@ -8,13 +8,12 @@ var maxHealth = 10
 var damage = 1
 
 # This is to determine enemy behaviour.
-var location = 0
+var location = Vector2()
 
 # This variable will affect our knockback power.
-var knockbackPower = Vector2()
-# This variable affects what direction the player is knocked back.
-var knockBackPosition = ""
+var knockback = Vector2()
 
+# THESE TWO VARIABLES DO NOT NEED TO BE LOADED HERE. YOU CAN PUT THEM IN THE PLAYER SCRIPT.
 # I want to make a state machine to control animations and knockback amongst other things.
 var state = "idle"
 

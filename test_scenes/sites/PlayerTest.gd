@@ -19,12 +19,13 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
-	# This sets our invincibility timer using the state "attacked".	
-	if playerVars.state == "attacked":
-		invincibilityTimer.start()
+	
+	# This gives us variable jumping heights by capping the height when the jump button is released.
+	if Input.is_action_just_released("jump"):
+		if velocity.y < -250:
+			velocity.y = -250
 	
 	# This sets our jump state.
 	if not is_on_floor() && playerVars.state != "attacked":
@@ -69,18 +70,20 @@ func _physics_process(delta):
 	move_and_slide()
 
 	# Need to update position variable. This must go after move_and_slide.
-	playerVars.location = position.x
+	playerVars.location = position
 	
 	
 
-# This function is going to make it so whenever the player touches an enemy, their health goes down.
+	# This function is going to make it so whenever the player touches an enemy, their health goes down.
 func _on_player_damage_radius_body_entered(body):
 		if body.is_in_group("Enemy") && playerVars.state != "attacked":
 			playerVars.health -= 1
+			velocity = playerVars.knockback
 			playerVars.state = "attacked"
+			invincibilityTimer.start()
 			
 
-
+# Try using linear_interpolate() on the velocity here so it increases gradually. 
 func _on_invincibility_timer_timeout():
 	velocity.x = 0
 	playerVars.state = "idle"
