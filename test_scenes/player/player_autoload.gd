@@ -10,11 +10,16 @@ var damage = 1
 # This is to determine enemy behaviour.
 var location = 0
 
-# This variable will affect our knockback. Enemies will change it when they collide with the player.
-var knockback = Vector2()
+# This variable will affect our knockback power.
+var knockbackPower = Vector2()
+# This variable affects what direction the player is knocked back.
+var knockBackPosition = ""
 
 # I want to make a state machine to control animations and knockback amongst other things.
 var state = "idle"
+
+# This will track what direction the player is facing for animation purposes.
+var facing = "right"
 
 
 # Called when the node enters the scene tree for the first time.

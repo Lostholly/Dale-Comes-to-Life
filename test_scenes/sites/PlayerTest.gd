@@ -21,50 +21,63 @@ func _physics_process(delta):
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-	
+
+	# This sets our invincibility timer using the state "attacked".	
 	if playerVars.state == "attacked":
 		invincibilityTimer.start()
-
+	
+	# This sets our jump state.
+	if not is_on_floor() && playerVars.state != "attacked":
+		playerVars.state = "jumping"
+	if playerVars.state == "jumping" && is_on_floor():
+		playerVars.state = "idle"
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 #	var direction = Input.get_axis("walk_left", "walk_right")
 	
 	# These make the player move when A or D (or the arrow keys) are pressed.
-	
 	if Input.is_action_pressed("walk_left") && Input.is_action_pressed("walk_right"):
 		velocity.x = 0
-		playerVars.state = "walking"
+		if playerVars.state != "jumping":
+			playerVars.state = "walking"
 	elif Input.is_action_pressed("walk_left"):
 		velocity.x = -SPEED
-		playerVars.state = "walking"
+		if playerVars.state != "jumping":
+			playerVars.state = "walking"
 	elif Input.is_action_pressed("walk_right"):
 		velocity.x = SPEED
-		playerVars.state = "walking"
-		
+		if playerVars.state != "jumping":
+			playerVars.state = "walking"
+	
+	# This sets the player back to the idle state after they stop moving and stops motion.
 	if Input.is_action_just_released("walk_left") || Input.is_action_just_released("walk_right"):
 		velocity.x = 0
-		playerVars.state = "idle"
+		if playerVars.state != "jumping":
+			playerVars.state = "idle"
+	
+	# We need to track our direction for animation purposes as well.
+	if Input.is_action_just_pressed("walk_left"):
+		playerVars.facing = "left"
+	
+	if Input.is_action_just_pressed("walk_right"):
+		playerVars.facing = "right"
 		
 		
-	print(playerVars.state)
-	#if direction:
-	#	velocity.x = direction * SPEED
-	#else:
-	#	velocity.x = 0
-	#	velocity.x = move_toward(velocity.x, 0, SPEED)
+	#print(playerVars.health)
+
 
 	move_and_slide()
 
-	# Need to update position variable.
+	# Need to update position variable. This must go after move_and_slide.
 	playerVars.location = position.x
-
 	
 	
 
 # This function is going to make it so whenever the player touches an enemy, their health goes down.
 func _on_player_damage_radius_body_entered(body):
-		if body.is_in_group("Enemy"):
+		if body.is_in_group("Enemy") && playerVars.state != "attacked":
 			playerVars.health -= 1
+			playerVars.state = "attacked"
 			
 
 
