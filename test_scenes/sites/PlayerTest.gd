@@ -19,12 +19,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 # We need to assign our animation controller to a variable.
 @onready var animations = $PlayerSprite/PlayerAnimations
 
-# We need to grab out collisions.
-@onready var attackLeft = $AttackCollisionLeft
-@onready var attackRight = $AttackCollisionRight
-@onready var attackUp = $AttackCollisionUp
-@onready var attackDown = $AttackCollisionDown
-
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -82,30 +76,18 @@ func _physics_process(delta):
 			if playerVars.facing == "left":
 				if Input.is_action_pressed("up"):
 					animations.play("attack_up_left")
-					attackUp.monitorable = true
 				elif Input.is_action_pressed("down") and playerVars.state == "jumping":
 					animations.play("attack_down_left")
-					attackDown.monitorable = true
 				else:
 					animations.play("attack_left")
-					attackLeft.monitorable = true
 			if playerVars.facing == "right":
 				if Input.is_action_pressed("up"):
 					animations.play("attack_up_right")
-					attackUp.monitorable = true
 				elif Input.is_action_pressed("down") and playerVars.state == "jumping":
 					animations.play("attack_down_right")
-					attackDown.monitorable = true
 				else:
 					animations.play("attack_right")
-					attackRight.monitorable = true
 					
-	# We have to make it so our attack collisions dissapear after the attack.
-	if playerVars.attacking == false:
-		attackLeft.monitorable = false
-		attackRight.monitorable = false
-		attackUp.monitorable = false
-		attackDown.monitorable = false
 		
 	# This is the animation section. This will use the facing and state playerVars.
 	if playerVars.attacking == false:
@@ -140,11 +122,11 @@ func _physics_process(delta):
 
 	# This function is going to make it so whenever the player touches an enemy, their health goes down.
 func _on_player_damage_radius_body_entered(body):
-		if body.is_in_group("Enemy") && playerVars.state != "attacked":
-			playerVars.health -= 1
-			velocity = playerVars.knockback
-			playerVars.state = "attacked"
-			invincibilityTimer.start()
+	if body.is_in_group("Enemy") && playerVars.state != "attacked" && playerVars.attacking == false:
+		playerVars.health -= 1
+		velocity = playerVars.knockback
+		playerVars.state = "attacked"
+		invincibilityTimer.start()
 			
 
 # Try using linear_interpolate() on the velocity here so it increases gradually. 
@@ -154,8 +136,3 @@ func _on_invincibility_timer_timeout():
 
 func _on_attack_timer_timeout():
 	playerVars.attacking = false
-
-# We want to make it so we can bounce on the enemy. 
-func _on_attack_collision_down_body_entered(body):
-	if body.is_in_group("Enemy"):
-		velocity.y = -600

@@ -30,9 +30,6 @@ var state = "idle"
 # We need a state to check if the enemy can see the player.
 var aware = false
 
-# Need a variable to determine if this is being attacked.
-var attacked = false
-
 # Need to get the timer node.
 @onready var invincibilityTimer = $InvincibilityTimer
 
@@ -41,7 +38,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
-	if attacked == false:
+	if state != "attacked":
 		velocity.x = direction * SPEED
 	
 	# We need to update our position variable for any of this to work at all.
@@ -68,9 +65,9 @@ func _physics_process(delta):
 		direction = -direction
 		
 	# We need to track if buddy is in the air or not.
-	if not is_on_floor() && attacked == false:
+	if not is_on_floor() && state != "attacked":
 		state = "jumping"
-	else:
+	elif state != "attacked":
 		state = "walking"
 	
 
@@ -85,16 +82,22 @@ func _on_enemy_timer_timeout():
 	# This will control our knockback.
 func _on_enemy_attack_radius_body_entered(body):
 	if body.is_in_group("Player"):
-		if relativePositionY == "above":
-			if relativePositionX == "right":
-				playerVars.knockback = Vector2(-500, 500)
-			if relativePositionX == "left":
-				playerVars.knockback = Vector2(500, 500)
-		if relativePositionY == "below":
-			if relativePositionX == "right":
-				playerVars.knockback = Vector2(-500, -500)
-			if relativePositionX == "left":
-				playerVars.knockback = Vector2(500, -500)
+		if playerVars.attacking == false:
+			if relativePositionY == "above":
+				if relativePositionX == "right":
+					playerVars.knockback = Vector2(-500, 500)
+				if relativePositionX == "left":
+					playerVars.knockback = Vector2(500, 500)
+			if relativePositionY == "below":
+				if relativePositionX == "right":
+					playerVars.knockback = Vector2(-500, -500)
+				if relativePositionX == "left":
+					playerVars.knockback = Vector2(500, -500)
+		if playerVars.attacking == true:
+			invincibilityTimer.start()
+			state = "attacked"
+			velocity.y = -800
+			velocity.x = 800
 
 
 	# This will control if the enemy sees the player.
@@ -105,16 +108,6 @@ func _on_enemy_detection_radius_body_entered(body):
 func _on_enemy_detection_radius_body_exited(body):
 	if body.is_in_group("Player"):
 		aware = false
+
 func _on_invincibility_timer_timeout():
-	attacked = false
-
-
-func _on_enemy_damage_radius_area_exited(area):
-	if area.is_in_group("Attack"):
-		attacked = true
-		invincibilityTimer.start()
-		if relativePositionX == "right":
-			velocity.x -= 400
-		if relativePositionX == "left":
-			velocity.x += 400
-		print(attacked)
+	state = "idle"
