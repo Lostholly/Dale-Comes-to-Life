@@ -1,6 +1,6 @@
+Timer
 CollisionShape2D
 Area2D
-Timer
 AnimationPlayer
 Sprite2D
 AnimatedSprite2D
