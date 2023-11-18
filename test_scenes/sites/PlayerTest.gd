@@ -19,6 +19,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 # We need to assign our animation controller to a variable.
 @onready var animations = $PlayerSprite/PlayerAnimations
 
+# We will use this to change the position of the attack collision.
+@onready var attackDirection = $AttackCollision/AttackShape
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -87,7 +90,16 @@ func _physics_process(delta):
 					animations.play("attack_down_right")
 				else:
 					animations.play("attack_right")
-					
+	
+	# Here lets set up our attack direction by changing the position of the attack shape node.
+	if Input.is_action_pressed("up"):
+		attackDirection.position = Vector2(-1, -33)
+	elif Input.is_action_pressed("down") && playerVars.state == "jumping":
+		attackDirection.position = Vector2(-1, 33)
+	elif playerVars.facing == "left":
+		attackDirection.position = Vector2(-25, 1)
+	elif playerVars.facing == "right":
+		attackDirection.position = Vector2(25, 1)
 		
 	# This is the animation section. This will use the facing and state playerVars.
 	if playerVars.attacking == false:
@@ -129,10 +141,16 @@ func _on_player_damage_radius_body_entered(body):
 		invincibilityTimer.start()
 			
 
-# Try using linear_interpolate() on the velocity here so it increases gradually. 
+# This prevents us from being spammed with damage and resets the idle animation.
 func _on_invincibility_timer_timeout():
 	velocity.x = 0
 	playerVars.state = "idle"
 
+# This prevents spamming attack.
 func _on_attack_timer_timeout():
 	playerVars.attacking = false
+
+# This makes us bounce.
+func _on_attack_collision_body_entered(body):
+	if body.is_in_group("Enemy") && playerVars.attacking == true && Input.is_action_pressed("down"):
+		velocity.y = -600

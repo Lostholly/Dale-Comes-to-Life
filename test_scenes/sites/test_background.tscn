@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://3bxb576u2i73"]
+[gd_scene load_steps=29 format=3 uid="uid://3bxb576u2i73"]
 
 [ext_resource type="TileSet" uid="uid://b0palas3pdluh" path="res://test_scenes/sites/test_background.tres" id="1_1iqmw"]
 [ext_resource type="Script" path="res://test_scenes/sites/PlayerTest.gd" id="2_4tmjy"]
@@ -14,6 +14,9 @@ size = Vector2(52, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fw2rn"]
 size = Vector2(853, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yx7s3"]
+size = Vector2(48, 43)
 
 [sub_resource type="Animation" id="Animation_n6c1a"]
 length = 0.001
@@ -47,6 +50,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [17]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackCollision:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_ad2vl"]
 resource_name = "attack_down_right"
@@ -64,6 +79,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [16]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackCollision:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_1tpem"]
@@ -83,12 +110,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [13]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackCollision:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_ixanj"]
 resource_name = "attacking_right"
-length = 0.4
+length = 0.8
 loop_mode = 1
-step = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -96,10 +134,22 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackCollision:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [12]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ffhdt"]
@@ -119,6 +169,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [15]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackCollision:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_go0wh"]
 resource_name = "attack_up"
@@ -136,6 +198,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [14]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackCollision:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_470a1"]
@@ -155,6 +229,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [9]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackCollision:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ghnpq"]
 resource_name = "damaged_right"
@@ -172,6 +258,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackCollision:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_gi0rc"]
@@ -191,6 +289,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [2, 3]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackCollision:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_bf2yv"]
 resource_name = "idle"
@@ -208,6 +318,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackCollision:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_a2lig"]
@@ -227,6 +349,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [11]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackCollision:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_tw5sr"]
 resource_name = "jumping_right"
@@ -245,6 +379,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [10]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackCollision:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_2p0r3"]
 resource_name = "walk_left"
@@ -262,6 +408,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [6, 7]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackCollision:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_mswm2"]
 resource_name = "walk_right"
@@ -278,6 +436,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackCollision:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wg0s2"]
@@ -306,6 +476,9 @@ height = 49.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fa0yv"]
 radius = 19.0
 height = 58.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bkr4"]
+size = Vector2(38.5, 34.625)
 
 [node name="TileMap" type="TileMap"]
 position = Vector2(216, -614)
@@ -349,10 +522,16 @@ shape = SubResource("RectangleShape2D_fw2rn")
 [node name="InvincibilityTimer" type="Timer" parent="EnemyTest"]
 wait_time = 0.439
 
+[node name="EnemyHitBox" type="Area2D" parent="EnemyTest"]
+
+[node name="HitBoxShape" type="CollisionShape2D" parent="EnemyTest/EnemyHitBox"]
+position = Vector2(-1, 2.5)
+shape = SubResource("RectangleShape2D_yx7s3")
+debug_color = Color(0.721569, 0.443137, 0.498039, 0.419608)
+
 [node name="PlayerTest" type="CharacterBody2D" parent="." groups=["Player"]]
-position = Vector2(875, 547)
+position = Vector2(874, 547)
 script = ExtResource("2_4tmjy")
-metadata/_edit_group_ = true
 
 [node name="PlayerCamera" type="Camera2D" parent="PlayerTest"]
 zoom = Vector2(1.4, 1.4)
@@ -384,11 +563,21 @@ one_shot = true
 [node name="AttackTimer" type="Timer" parent="PlayerTest"]
 wait_time = 0.2
 
+[node name="AttackCollision" type="Area2D" parent="PlayerTest" groups=["Attack"]]
+monitorable = false
+
+[node name="AttackShape" type="CollisionShape2D" parent="PlayerTest/AttackCollision"]
+position = Vector2(0.75, -26)
+shape = SubResource("RectangleShape2D_8bkr4")
+debug_color = Color(0.764706, 0.415686, 0.478431, 0.419608)
+
 [connection signal="timeout" from="EnemyTest/EnemyTimer" to="EnemyTest" method="_on_enemy_timer_timeout"]
 [connection signal="body_entered" from="EnemyTest/EnemyAttackRadius" to="EnemyTest" method="_on_enemy_attack_radius_body_entered"]
 [connection signal="body_entered" from="EnemyTest/EnemyDetectionRadius" to="EnemyTest" method="_on_enemy_detection_radius_body_entered"]
 [connection signal="body_exited" from="EnemyTest/EnemyDetectionRadius" to="EnemyTest" method="_on_enemy_detection_radius_body_exited"]
 [connection signal="timeout" from="EnemyTest/InvincibilityTimer" to="EnemyTest" method="_on_invincibility_timer_timeout"]
+[connection signal="area_entered" from="EnemyTest/EnemyHitBox" to="EnemyTest" method="_on_enemy_hit_box_area_entered"]
 [connection signal="body_entered" from="PlayerTest/PlayerDamageRadius" to="PlayerTest" method="_on_player_damage_radius_body_entered"]
 [connection signal="timeout" from="PlayerTest/InvincibilityTimer" to="PlayerTest" method="_on_invincibility_timer_timeout"]
 [connection signal="timeout" from="PlayerTest/AttackTimer" to="PlayerTest" method="_on_attack_timer_timeout"]
+[connection signal="body_entered" from="PlayerTest/AttackCollision" to="PlayerTest" method="_on_attack_collision_body_entered"]

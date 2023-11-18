@@ -4,6 +4,10 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+# Need enemy health.
+var health = 3
+const MAX_HEALTH = 3
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -32,6 +36,8 @@ var aware = false
 
 # Need to get the timer node.
 @onready var invincibilityTimer = $InvincibilityTimer
+
+@onready var canEnemyBeHit = $EnemyHitBox
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -70,6 +76,18 @@ func _physics_process(delta):
 	elif state != "attacked":
 		state = "walking"
 	
+	# Going to track if the player is attacking to see if we can make it so the enemy only picks up the damage at that time.
+	if playerVars.attacking == true:
+		canEnemyBeHit.monitoring = true
+	else:
+		canEnemyBeHit.monitoring = false
+	
+	# Need to create a default bit of script for watching health and keeping it in bounds.
+	if health > MAX_HEALTH:
+		health = MAX_HEALTH
+	if health <= 0:
+		health = 0
+		queue_free()
 
 
 	# This timer should periodically trigger a jump from the enemy. 
@@ -93,11 +111,6 @@ func _on_enemy_attack_radius_body_entered(body):
 					playerVars.knockback = Vector2(-500, -500)
 				if relativePositionX == "left":
 					playerVars.knockback = Vector2(500, -500)
-		if playerVars.attacking == true:
-			invincibilityTimer.start()
-			state = "attacked"
-			velocity.y = -800
-			velocity.x = 800
 
 
 	# This will control if the enemy sees the player.
@@ -111,3 +124,21 @@ func _on_enemy_detection_radius_body_exited(body):
 
 func _on_invincibility_timer_timeout():
 	state = "idle"
+
+# Trying to detect the attack collison here.
+func _on_enemy_hit_box_area_entered(area):
+	if area.is_in_group("Attack"):
+		print(health)
+		health -= 1
+		state = "attacked"
+		invincibilityTimer.start()
+		if relativePositionY == "above":
+			if relativePositionX == "right":
+				velocity = Vector2(500, -500)
+			if relativePositionX == "left":
+				velocity = Vector2(-500, -500)
+		if relativePositionY == "below":
+			if relativePositionX == "right":
+				velocity = Vector2(500, 500)
+			if relativePositionX == "left":
+				velocity = Vector2(-500, 500)
