@@ -67,7 +67,7 @@ func _physics_process(delta):
 	else:
 		state = "walking"
 	
-#	print(relativePositionY)
+#	print(playerVars.health)
 
 
 

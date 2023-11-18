@@ -1,7 +1,7 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1700221788
+::res://::1700256887
 icon.svg::CompressedTexture2D::2914746302707141737::1699219895::1699219901::1::::<><>::
-::res://assets/::1699220892
+::res://assets/::1700259213
 ::res://assets/fonts/::1699220907
 cruft.ttf::FontFile::2118069620883807284::1636312650::1699220907::1::::<><>::
 UNLICENSE.txt::TextFile::-1::1636312650::0::1::::<><>::
@@ -9,16 +9,17 @@ UNLICENSE.txt::TextFile::-1::1636312650::0::1::::<><>::
 ::res://assets/scenery/::1699220907
 ground_placeholder.png::CompressedTexture2D::4459325834045020463::1699218339::1699220907::1::::<><>::
 ::res://assets/sfx/::1699217138
-::res://assets/sprites/::1699228707
+::res://assets/sprites/::1700259218
+Animated Player Placeholder.png::CompressedTexture2D::2266244196662089426::1700259161::1700259241::1::::<><>::
 Placeholder_Enemy.png::CompressedTexture2D::7626569516672639070::1699228651::1699228707::1::::<><>::
 placeholder_player.png::CompressedTexture2D::1627961749150206977::1699218502::1699220907::1::::<><>::
 ::res://test_scenes/::1700090189
 ::res://test_scenes/entities/::1699224136
-::res://test_scenes/player/::1700185610
-player_autoload.gd::GDScript::-1::1700183816::0::1::::<>Node<>::
-player_autoload.tscn::PackedScene::5112521073005114625::1700185610::0::1::::<><>::res://test_scenes/player/player_autoload.gd
-::res://test_scenes/sites/::1700185934
-EnemyTest.gd::GDScript::-1::1700180209::0::1::::<>CharacterBody2D<>::
-PlayerTest.gd::GDScript::-1::1700185934::0::1::::<>CharacterBody2D<>::
-test_background.tres::TileSet::4172127113786608867::1700175522::0::1::::<><>::uid://b4sepene360rr::::res://assets/scenery/ground_placeholder.png
-test_background.tscn::PackedScene::1968751902817042164::1700185934::0::1::::<><>::uid://b0palas3pdluh::::res://test_scenes/sites/test_background.tres<>res://test_scenes/sites/PlayerTest.gd<>uid://xguj60cl24af::::res://assets/sprites/placeholder_player.png<>uid://dgwmqrpk2ryu5::::res://assets/sprites/Placeholder_Enemy.png<>res://test_scenes/sites/EnemyTest.gd
+::res://test_scenes/player/::1700256933
+player_autoload.gd::GDScript::-1::1700232900::0::1::::<>Node<>::
+player_autoload.tscn::PackedScene::5112521073005114625::1700256933::0::1::::<><>::res://test_scenes/player/player_autoload.gd
+::res://test_scenes/sites/::1700256933
+EnemyTest.gd::GDScript::-1::1700256933::0::1::::<>CharacterBody2D<>::
+PlayerTest.gd::GDScript::-1::1700231838::0::1::::<>CharacterBody2D<>::
+test_background.tres::TileSet::4172127113786608867::1700256897::0::1::::<><>::uid://b4sepene360rr::::res://assets/scenery/ground_placeholder.png
+test_background.tscn::PackedScene::1968751902817042164::1700256933::0::1::::<><>::uid://b0palas3pdluh::::res://test_scenes/sites/test_background.tres<>res://test_scenes/sites/PlayerTest.gd<>uid://xguj60cl24af::::res://assets/sprites/placeholder_player.png<>uid://dgwmqrpk2ryu5::::res://assets/sprites/Placeholder_Enemy.png<>res://test_scenes/sites/EnemyTest.gd

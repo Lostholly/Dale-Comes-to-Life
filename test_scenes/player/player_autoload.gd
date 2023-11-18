@@ -20,6 +20,8 @@ var state = "idle"
 # This will track what direction the player is facing for animation purposes.
 var facing = "right"
 
+# We need a variable to determine if the character is attacking for collision and animation purposes.
+var attacking = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

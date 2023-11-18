@@ -1,9 +1,11 @@
 CollisionShape2D
 Area2D
 Timer
+AnimationPlayer
+Sprite2D
+AnimatedSprite2D
 RayCast2D
 CharacterBody2D
-Sprite2D
 RigidBody2D
 Camera2D
 TileMap

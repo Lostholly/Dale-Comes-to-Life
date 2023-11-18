@@ -13,14 +13,21 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 # We need to set up our variable to trigger the invincibility timer.
 @onready var invincibilityTimer = get_node("InvincibilityTimer")
 
+# Likewise for the attack cooldown.
+@onready var attackTimer = get_node("AttackTimer")
+
+# We need to assign our animation controller to a variable.
+@onready var animations = $PlayerSprite/PlayerAnimations
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
 	# Handle Jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if playerVars.state != "attacked":
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
 	
 	# This gives us variable jumping heights by capping the height when the jump button is released.
 	if Input.is_action_just_released("jump"):
@@ -32,23 +39,21 @@ func _physics_process(delta):
 		playerVars.state = "jumping"
 	if playerVars.state == "jumping" && is_on_floor():
 		playerVars.state = "idle"
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-#	var direction = Input.get_axis("walk_left", "walk_right")
 	
 	# These make the player move when A or D (or the arrow keys) are pressed.
-	if Input.is_action_pressed("walk_left") && Input.is_action_pressed("walk_right"):
-		velocity.x = 0
-		if playerVars.state != "jumping":
-			playerVars.state = "walking"
-	elif Input.is_action_pressed("walk_left"):
-		velocity.x = -SPEED
-		if playerVars.state != "jumping":
-			playerVars.state = "walking"
-	elif Input.is_action_pressed("walk_right"):
-		velocity.x = SPEED
-		if playerVars.state != "jumping":
-			playerVars.state = "walking"
+	if playerVars.state != "attacked":
+		if Input.is_action_pressed("walk_left") && Input.is_action_pressed("walk_right"):
+			velocity.x = 0
+			if playerVars.state != "jumping":
+				playerVars.state = "walking"
+		elif Input.is_action_pressed("walk_left"):
+			velocity.x = -SPEED
+			if playerVars.state != "jumping":
+				playerVars.state = "walking"
+		elif Input.is_action_pressed("walk_right"):
+			velocity.x = SPEED
+			if playerVars.state != "jumping":
+				playerVars.state = "walking"
 	
 	# This sets the player back to the idle state after they stop moving and stops motion.
 	if Input.is_action_just_released("walk_left") || Input.is_action_just_released("walk_right"):
@@ -63,8 +68,52 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("walk_right"):
 		playerVars.facing = "right"
 		
+	# Alright, let's set up our attacks.
+	if playerVars.state != "attacked":
+		if Input.is_action_just_pressed("attack") and playerVars.attacking == false:
+			playerVars.attacking = true
+			attackTimer.start()
+			if playerVars.facing == "left":
+				if Input.is_action_pressed("up"):
+					animations.play("attack_up_left")
+				else:
+					animations.play("attack_left")
+				if Input.is_action_pressed("down") and playerVars.state == "jumping":
+					animations.play("attack_down_left")
+			if playerVars.facing == "right":
+				if Input.is_action_pressed("up"):
+					animations.play("attack_up_right")
+				else:
+					animations.play("attack_right")
+				if Input.is_action_pressed("down") and playerVars.state == "jumping":
+					animations.play("attack_down_right")
+			
 		
-	#print(playerVars.health)
+	# This is the animation section. This will use the facing and state playerVars.
+	if playerVars.attacking == false:
+		if playerVars.state == "idle":
+			if playerVars.facing == "left":
+				animations.play("idle_left")
+			if playerVars.facing == "right":
+				animations.play("idle_right")
+		elif playerVars.state == "walking":
+			if playerVars.facing == "left":
+				animations.play("walk_left")
+			if playerVars.facing == "right":
+				animations.play("walk_right")
+		elif playerVars.state == "jumping":
+			if playerVars.facing == "left":
+				animations.play("jump_left")
+			if playerVars.facing == "right":
+				animations.play("jump_right")
+		elif playerVars.state == "attacked":
+			if playerVars.facing == "left":
+				animations.play("damaged_left")
+			if playerVars.facing == "right":
+				animations.play("damaged_right")
+	
+	print(playerVars.attacking)
+	
 
 
 	move_and_slide()
@@ -87,3 +136,7 @@ func _on_player_damage_radius_body_entered(body):
 func _on_invincibility_timer_timeout():
 	velocity.x = 0
 	playerVars.state = "idle"
+
+
+func _on_attack_timer_timeout():
+	playerVars.attacking = false
