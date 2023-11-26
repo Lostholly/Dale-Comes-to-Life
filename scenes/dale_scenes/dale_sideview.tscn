@@ -353,7 +353,7 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dfi26"]
 radius = 16.0
-height = 56.0
+height = 52.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8885f"]
 radius = 17.0

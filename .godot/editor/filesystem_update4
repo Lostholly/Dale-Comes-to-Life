@@ -6,3 +6,4 @@ res://scripts/dale_scripts/dale_autoload.gd
 res://test_scenes/sites/PlayerTest.gd
 res://scripts/dale_scripts/dale_sideview.gd
 res://test_scenes/player/player_autoload.gd
+res://test_scenes/sites/EnemyTest.gd

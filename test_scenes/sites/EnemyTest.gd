@@ -19,7 +19,7 @@ func enemy_jump():
 	velocity.y = JUMP_VELOCITY
 	
 # We need to access our global variables.
-@onready var playerVars = get_node("/root/PlayerAutoload")
+@onready var playerVars = get_node("/root/DaleAutoload")
 
 # We also need our enemy position.
 var enemyPosition = position
@@ -47,24 +47,27 @@ func _physics_process(delta):
 	if state != "attacked":
 		velocity.x = direction * SPEED
 	
-	# We need to update our position variable for any of this to work at all.
-	enemyPosition = position
 
 	move_and_slide()
+
+	# We need to update our position variable for any of this to work at all.
+	enemyPosition = position
 	
 	# This makes the enemy follow the player. This is also used to track the position relative to the player for knockback.
 	if aware == true:
-		if enemyPosition.x > playerVars.location.x:
+		if enemyPosition.x > playerVars.dalePosition.x:
 			direction = -1
 			relativePositionX = "right"
-		elif enemyPosition.x < playerVars.location.x:
+		elif enemyPosition.x < playerVars.dalePosition.x:
 			direction = 1
 			relativePositionX = "left"
 	
+	print(relativePositionX)
+	
 	# We are also going to track the relative position to see if the enemy is higher than the player.
-	if enemyPosition.y > playerVars.location.y:
+	if enemyPosition.y > playerVars.dalePosition.y:
 		relativePositionY = "below"
-	elif enemyPosition.y < playerVars.location.y:
+	elif enemyPosition.y < playerVars.dalePosition.y:
 		relativePositionY = "above"
 	
 	if aware == false && is_on_wall():

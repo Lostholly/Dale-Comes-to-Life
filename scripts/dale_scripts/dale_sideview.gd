@@ -5,25 +5,16 @@ extends CharacterBody2D
 @export var jumpVelocity = -900.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-# Gameplay variables imported from the Dale autoload (so they can be tracked across systems).
-@onready var health = get_node("/root/DaleAutoload").health
-@onready var damage = get_node("/root/DaleAutoload").damage
+# We have to call our global variables as variable for various processes.
+@onready var globalVariables = get_node("/root/DaleAutoload")
 
 # Behaviour variables to determine things like invincibility frames and animations.
-@onready var attacking = get_node("/root/DaleAutoload").attacking
 @onready var animations = $AnimationPlayer
 @onready var invincibilityTimer = $InvincibilityTimer
 @onready var attackTimer = $AttackTimer
 @onready var attackDirection = $AttackArea2D/AttackShape2D
 var state = "idle"
 var facing = "right"
-
-# We need this variable to cause knockback from enemies.
-@onready var knockback = get_node("/root/DaleAutoload").knockback
-
-# Lastly we need a variable for exporting the position of the player.
-@onready var dalePosition = get_node("/root/DaleAutoload").dalePosition
-
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -77,8 +68,8 @@ func _physics_process(delta):
 
 	# This is our attacking section. This monstrosity controls our attack animations.
 	if state != "attacked":
-		if Input.is_action_just_pressed("attack") and attacking == false:
-			attacking = true
+		if Input.is_action_just_pressed("attack") and globalVariables.attacking == false:
+			globalVariables.attacking = true
 			attackTimer.start()
 			if facing == "left":
 				if state == "jumping":
@@ -119,7 +110,7 @@ func _physics_process(delta):
 
 
 	# This is our animation section. It controls the animation based on state and direction.
-	if attacking == false:
+	if globalVariables.attacking == false:
 		if state == "idle":
 			if facing == "left":
 				animations.play("idle_left")
@@ -127,9 +118,9 @@ func _physics_process(delta):
 				animations.play("idle_right")
 		elif state == "walking":
 			if facing == "left":
-				animations.play("walk_left")
+				animations.play("run_left")
 			if facing == "right":
-				animations.play("walk_right")
+				animations.play("run_right")
 		elif state == "jumping":
 			if facing == "left":
 				animations.play("jump_left")
@@ -145,13 +136,13 @@ func _physics_process(delta):
 	move_and_slide()
 
 	# Need to update position variable. This must go after move_and_slide.
-	dalePosition = position
+	globalVariables.dalePosition = position
 
 # Triggers damage on Dale and starts an invincibility timer.
 func _on_damage_area_2d_body_entered(body):
-	if body.is_in_group("Enemy") && state != "attacked" && attacking == false:
-		health -= 1
-		velocity = knockback
+	if body.is_in_group("Enemy") && state != "attacked" && globalVariables.attacking == false:
+		globalVariables.health -= 1
+		velocity = globalVariables.knockback
 		state = "attacked"
 		invincibilityTimer.start()
 
@@ -162,9 +153,9 @@ func _on_invincibility_timer_timeout():
 
 # This gives us a bounce effect when we hit an enemy from above.
 func _on_attack_area_2d_body_entered(body):
-	if body.is_in_group("Enemy") && attacking == true && Input.is_action_pressed("down"):
+	if body.is_in_group("Enemy") && globalVariables.attacking == true && Input.is_action_pressed("down"):
 		velocity.y = -600
 
 # This makes it so attacking has a cooldown.
 func _on_attack_timer_timeout():
-	attacking = false
+	globalVariables.attacking = false
