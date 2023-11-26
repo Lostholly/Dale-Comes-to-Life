@@ -41,8 +41,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_rbqww"]
 resource_name = "attack_right"
-length = 0.2
-step = 0.05
+length = 0.28
+step = 0.07
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -50,7 +50,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.21),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [36, 37, 38, 39]
@@ -58,8 +58,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_abq25"]
 resource_name = "attack_left"
-length = 0.2
-step = 0.05
+length = 0.35
+step = 0.07
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -67,7 +67,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.21),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [32, 33, 34, 35]
@@ -75,8 +75,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_lgyus"]
 resource_name = "attack_up_left"
-length = 0.2
-step = 0.05
+length = 0.28
+step = 0.07
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -84,7 +84,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.21),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [40, 41, 42, 43]
@@ -92,8 +92,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_rwwm8"]
 resource_name = "attack_up_right"
-length = 0.2
-step = 0.05
+length = 0.28
+step = 0.07
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -101,7 +101,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.21),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [44, 45, 46, 47]
@@ -213,8 +213,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_j8h4s"]
 resource_name = "jump_attack_left"
-length = 0.2
-step = 0.05
+length = 0.28
+step = 0.07
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -222,7 +222,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.21),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [48, 49, 50, 51]
@@ -230,8 +230,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_e5rw6"]
 resource_name = "jump_attack_right"
-length = 0.2
-step = 0.05
+length = 0.28
+step = 0.07
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -239,7 +239,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.21),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [52, 53, 54, 55]
@@ -247,8 +247,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_p8m6n"]
 resource_name = "jump_attack_up_left"
-length = 0.2
-step = 0.05
+length = 0.28
+step = 0.07
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -256,7 +256,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.21),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [56, 57, 58, 59]
@@ -264,8 +264,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_q6ykt"]
 resource_name = "jump_attack_up_right"
-length = 0.2
-step = 0.05
+length = 0.28
+step = 0.07
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -273,7 +273,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.21),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [60, 61, 62, 63]
@@ -281,8 +281,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_a40ja"]
 resource_name = "jump_attack_down_left"
-length = 0.2
-step = 0.05
+length = 0.28
+step = 0.07
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -290,7 +290,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.21),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [64, 65, 66, 67]
@@ -313,8 +313,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_nus8e"]
 resource_name = "jump_attack_Down_right"
-length = 0.2
-step = 0.05
+length = 0.28
+step = 0.07
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -322,7 +322,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.21),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [68, 69, 70, 71]
@@ -401,7 +401,7 @@ wait_time = 0.229
 one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.28
 one_shot = true
 
 [connection signal="body_entered" from="DamageArea2D" to="." method="_on_damage_area_2d_body_entered"]
