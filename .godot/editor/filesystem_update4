@@ -1,3 +1,8 @@
-res://test_scenes/sites/test_background.tscn
 res://test_scenes/sites/test_background.tres
-res://test_scenes/player/player_autoload.tscn
+res://scenes/dale_scenes/dale_autoload.tscn
+res://scenes/dale_scenes/dale_sideview.tscn
+res://test_scenes/sites/test_background.tscn
+res://scripts/dale_scripts/dale_autoload.gd
+res://test_scenes/sites/PlayerTest.gd
+res://scripts/dale_scripts/dale_sideview.gd
+res://test_scenes/player/player_autoload.gd

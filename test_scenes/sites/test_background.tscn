@@ -564,7 +564,6 @@ one_shot = true
 wait_time = 0.2
 
 [node name="AttackCollision" type="Area2D" parent="PlayerTest" groups=["Attack"]]
-monitorable = false
 
 [node name="AttackShape" type="CollisionShape2D" parent="PlayerTest/AttackCollision"]
 position = Vector2(0.75, -26)
