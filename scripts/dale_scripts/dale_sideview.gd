@@ -46,7 +46,7 @@ func _physics_process(delta):
 		if Input.is_action_pressed("walk_left") && Input.is_action_pressed("walk_right"):
 			velocity.x = 0
 			if state != "jumping":
-				state = "walking"
+				state = "idle"
 		elif Input.is_action_pressed("walk_left"):
 			velocity.x = -speed
 			if state != "jumping":
@@ -57,10 +57,13 @@ func _physics_process(delta):
 				state = "walking"
 
 	# We need to track our direction for animation purposes.
-	if Input.is_action_just_pressed("walk_left"):
-		facing = "left"
-	if Input.is_action_just_pressed("walk_right"):
-		facing = "right"
+		if Input.is_action_pressed("walk_left") && Input.is_action_pressed("walk_right"):
+			pass
+		else:
+			if Input.is_action_pressed("walk_left"):
+				facing = "left"
+			if Input.is_action_pressed("walk_right"):
+				facing = "right"
 		
 	# Finally, we need to reset our idle animation after jumping or moving.
 	if Input.is_action_just_released("walk_left") || Input.is_action_just_released("walk_right"):

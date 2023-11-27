@@ -47,4 +47,4 @@ texture = ExtResource("2_mxlwa")
 metadata/_edit_lock_ = true
 
 [node name="dale_sideview" parent="." instance=ExtResource("2_ythp1")]
-position = Vector2(-374, 530)
+position = Vector2(-1459, 609)
