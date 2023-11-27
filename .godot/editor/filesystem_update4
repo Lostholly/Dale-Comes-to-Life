@@ -1,7 +1,8 @@
-res://scenes/site_scenes/village.tscn
+res://scenes/dale_scenes/dale_sideview.tscn
 res://test_scenes/sites/test_background.tres
 res://assets/scenery/sideview_tileset/desert_tileset.tres
-res://scenes/dale_scenes/dale_sideview.tscn
-res://test_scenes/sites/test_background.tscn
-res://scripts/environment_scripts/ParallaxScript.gd
 res://scripts/dale_scripts/dale_sideview.gd
+res://scripts/dale_scripts/dale_autoload.gd
+res://test_scenes/sites/test_background.tscn
+res://scenes/site_scenes/village.tscn
+res://scripts/environment_scripts/village.gd

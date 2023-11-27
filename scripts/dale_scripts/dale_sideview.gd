@@ -139,13 +139,19 @@ func _physics_process(delta):
 				animations.play("damaged_right")
 
 
-	# This will be the camera section.
-	if globalVariables.dalePosition.y < 256:
-		var tween = get_tree().create_tween()
-		tween.tween_property(camera, "offset", Vector2(0, 0), 0.15)
-	else:
-		var tween = get_tree().create_tween()
-		tween.tween_property(camera, "offset", Vector2(0, -50), 0.15)
+	# This will be the camera section. It will adjust the camera based on the current scene.
+	if globalVariables.currentScene == "village":
+		camera.limit_bottom = 768
+		camera.limit_top = -2000
+		camera.limit_left = -1728
+		camera.limit_right = 6080
+	# This section makes sure the camera skews a bit above Dale if he's on the ground.
+		if globalVariables.dalePosition.y < 256:
+			var tween = get_tree().create_tween()
+			tween.tween_property(camera, "offset", Vector2(0, 0), 0.15)
+		else:
+			var tween = get_tree().create_tween()
+			tween.tween_property(camera, "offset", Vector2(0, -80), 0.15)
 
 
 

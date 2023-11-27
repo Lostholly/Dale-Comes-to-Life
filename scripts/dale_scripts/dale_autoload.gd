@@ -12,6 +12,9 @@ var knockback = Vector2()
 # We need this one lone behaviour variable so enemies can detect if Dale is attacking.
 var attacking = false
 
+# This variable will control the camera for Dale. It will adjust the bounds based on where he is.
+var currentScene = "village"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
