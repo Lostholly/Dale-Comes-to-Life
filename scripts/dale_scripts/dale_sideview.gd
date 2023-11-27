@@ -16,6 +16,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var state = "idle"
 var facing = "right"
 
+# We need to assign the camera to a variable to control it a bit.
+@onready var camera = $Camera2D
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -131,6 +134,17 @@ func _physics_process(delta):
 				animations.play("damaged_left")
 			if facing == "right":
 				animations.play("damaged_right")
+
+
+	# This will be the camera section.
+	if globalVariables.dalePosition.y < 256:
+		var tween = get_tree().create_tween()
+		tween.tween_property(camera, "offset", Vector2(0, 0), 0.15)
+	else:
+		var tween = get_tree().create_tween()
+		tween.tween_property(camera, "offset", Vector2(0, -50), 0.15)
+
+
 
 	# This function makes the physics work.
 	move_and_slide()

@@ -1,11 +1,7 @@
+res://scenes/site_scenes/village.tscn
 res://test_scenes/sites/test_background.tres
-res://scenes/dale_scenes/dale_autoload.tscn
+res://assets/scenery/sideview_tileset/desert_tileset.tres
 res://scenes/dale_scenes/dale_sideview.tscn
 res://test_scenes/sites/test_background.tscn
-res://scripts/dale_scripts/dale_autoload.gd
-res://test_scenes/sites/PlayerTest.gd
+res://scripts/environment_scripts/ParallaxScript.gd
 res://scripts/dale_scripts/dale_sideview.gd
-res://test_scenes/player/player_autoload.gd
-res://test_scenes/sites/EnemyTest.gd
-res://scenes/site_scenes/village.tscn
-res://assets/scenery/sideview_tileset/desert_tileset.tres
