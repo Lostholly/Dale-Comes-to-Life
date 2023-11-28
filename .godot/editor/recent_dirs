@@ -1,7 +1,7 @@
-res://assets/scenery/backgrounds
-res://assets/ui_assets
-res://scenes/ui_scenes
 res://assets/fonts
+res://assets/ui_assets
+res://assets/scenery/backgrounds
+res://scenes/ui_scenes
 res://scripts/environment_scripts
 res://assets/scenery/sideview_tileset
 res://scripts/enemy_scripts

@@ -1,9 +1,11 @@
-TileMap
-Sprite2D
+Label
+Button
+VBoxContainer
 TextureRect
 MarginContainer
-Label
 CenterContainer
+TileMap
+Sprite2D
 Timer
 CollisionShape2D
 Area2D
