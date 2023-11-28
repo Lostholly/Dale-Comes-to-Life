@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://dhyortiju50o7"]
+
+[ext_resource type="Texture2D" uid="uid://o2qf1p0b6p4s" path="res://assets/sprites/dale_sprites/dale_overhead.png" id="1_812k2"]
+[ext_resource type="Script" path="res://scripts/dale_scripts/dale_overhead.gd" id="1_hue7g"]
+
+[sub_resource type="Animation" id="Animation_o7kxp"]
+resource_name = "walking"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 0, 3, 2]
+}
+
+[sub_resource type="Animation" id="Animation_vykc1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8wthp"]
+resource_name = "scale_up"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7pih6"]
+_data = {
+"RESET": SubResource("Animation_vykc1"),
+"scale_up": SubResource("Animation_8wthp"),
+"walking": SubResource("Animation_o7kxp")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eom4u"]
+radius = 11.0
+height = 50.0
+
+[node name="dale_overhead" type="CharacterBody2D"]
+script = ExtResource("1_hue7g")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.2, 2.2)
+limit_left = -192
+limit_top = -190
+limit_right = 1472
+limit_bottom = 895
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_812k2")
+hframes = 4
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7pih6")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_eom4u")
