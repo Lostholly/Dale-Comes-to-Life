@@ -1,0 +1,159 @@
+[gd_scene load_steps=13 format=3 uid="uid://d107b2rqo2u24"]
+
+[ext_resource type="Texture2D" uid="uid://3dciiy7twyun" path="res://assets/sprites/enemy_sprites/mawling.png" id="1_1syg8"]
+[ext_resource type="Script" path="res://scripts/enemy_scripts/mawling.gd" id="1_mj3gm"]
+
+[sub_resource type="Animation" id="Animation_hnvwj"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_gvp4k"]
+resource_name = "angry_walk"
+length = 0.3
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_j4782"]
+resource_name = "death"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_ewjej"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_a3u1a"]
+resource_name = "damaged"
+length = 0.8
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_luygo"]
+_data = {
+"RESET": SubResource("Animation_ewjej"),
+"angry_walk": SubResource("Animation_gvp4k"),
+"damaged": SubResource("Animation_a3u1a"),
+"death": SubResource("Animation_j4782"),
+"walk": SubResource("Animation_hnvwj")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ook0k"]
+radius = 15.0
+height = 50.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cd5ty"]
+size = Vector2(666, 140)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3j3bc"]
+radius = 20.0
+height = 40.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0tm1l"]
+radius = 12.0
+height = 42.0
+
+[node name="mawling" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_mj3gm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1syg8")
+hframes = 8
+vframes = 2
+frame = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_luygo")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_ook0k")
+
+[node name="DetectionArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea2D"]
+position = Vector2(-1, -14)
+shape = SubResource("RectangleShape2D_cd5ty")
+debug_color = Color(0.52549, 0.572549, 0.12549, 0.419608)
+
+[node name="DamageArea2D" type="Area2D" parent="."]
+
+[node name="DamageShape2D" type="CollisionShape2D" parent="DamageArea2D"]
+shape = SubResource("CapsuleShape2D_3j3bc")
+debug_color = Color(0.192157, 0.615686, 0.501961, 0.419608)
+
+[node name="AttackArea2D" type="Area2D" parent="."]
+
+[node name="AttackShape2D" type="CollisionShape2D" parent="AttackArea2D"]
+position = Vector2(-4, 0)
+shape = SubResource("CapsuleShape2D_0tm1l")
+debug_color = Color(0.803922, 0.356863, 0.560784, 0.419608)
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="DetectionArea2D" to="." method="_on_detection_area_2d_body_entered"]
+[connection signal="body_exited" from="DetectionArea2D" to="." method="_on_detection_area_2d_body_exited"]
+[connection signal="area_entered" from="DamageArea2D" to="." method="_on_damage_area_2d_area_entered"]
+[connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]

@@ -1,9 +1,9 @@
 extends Node
 
 # Gameplay variables.
-@export var health = 10
-@export var maxHealth = 10
-@export var damage = 1
+var health = 10
+var maxHealth = 10
+var damage = 1
 
 # Motion variables. Tracks the player's position for enemy behaviour. The knockback variable moves Dale when attacked.
 var dalePosition = Vector2()

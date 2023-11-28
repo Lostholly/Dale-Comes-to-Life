@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl1tee7tu2kx7"]
+
+[ext_resource type="Texture2D" uid="uid://bdasvcsbvmpt6" path="res://assets/scenery/backgrounds/sky.png" id="1_jvpb1"]
+[ext_resource type="Texture2D" uid="uid://dikwcct0qbp5x" path="res://assets/scenery/backgrounds/clouds.png" id="2_bqo73"]
+[ext_resource type="Texture2D" uid="uid://cdjb8lqllqn1q" path="res://assets/scenery/backgrounds/far_mountains.png" id="3_t1u58"]
+
+[node name="title_menu" type="Node2D"]
+
+[node name="Sky" type="Sprite2D" parent="."]
+texture = ExtResource("1_jvpb1")
+
+[node name="Clouds" type="Sprite2D" parent="."]
+texture = ExtResource("2_bqo73")
+
+[node name="Mountains" type="Sprite2D" parent="."]
+texture = ExtResource("3_t1u58")

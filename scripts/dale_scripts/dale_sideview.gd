@@ -152,7 +152,17 @@ func _physics_process(delta):
 		else:
 			var tween = get_tree().create_tween()
 			tween.tween_property(camera, "offset", Vector2(0, -80), 0.15)
-
+	if globalVariables.currentScene == "enemyEncounter1":
+		camera.limit_bottom = 768
+		camera.limit_top = -2000
+		camera.limit_left = 0
+		camera.limit_right = 3904
+		if globalVariables.dalePosition.y < 256:
+			var tween = get_tree().create_tween()
+			tween.tween_property(camera, "offset", Vector2(0, 0), 0.15)
+		else:
+			var tween = get_tree().create_tween()
+			tween.tween_property(camera, "offset", Vector2(0, -80), 0.15)
 
 
 	# This function makes the physics work.
