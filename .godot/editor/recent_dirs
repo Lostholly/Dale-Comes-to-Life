@@ -1,13 +1,15 @@
+res://scripts/environment_scripts
+res://scenes/ui_scenes
+res://assets/music
+res://scripts/ui_scripts
+res://assets/sprites/dale_sprites
+res://assets/scenery/sideview_tileset
 res://assets/fonts
 res://assets/ui_assets
 res://assets/scenery/backgrounds
-res://scenes/ui_scenes
-res://scripts/environment_scripts
-res://assets/scenery/sideview_tileset
 res://scripts/enemy_scripts
 res://assets/sprites/enemy_sprites
 res://scripts/dale_scripts
-res://assets/sprites/dale_sprites
 C:/Users/jerem/OneDrive/Documents/Jeremy's Projects/Game Design Projects/Dale Comes to Life/Builds
 res://scenes/dale_scenes
 res://assets/sprites

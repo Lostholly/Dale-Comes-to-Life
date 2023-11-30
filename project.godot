@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 PlayerAutoload="*res://test_scenes/player/player_autoload.tscn"
 DaleAutoload="*res://scenes/dale_scenes/dale_autoload.tscn"
+MusicPlayer="*res://scenes/ui_scenes/music_player.tscn"
 
 [input]
 

@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvv2cj24j3wpj"]
+
+[ext_resource type="AudioStream" uid="uid://j42cwsq33k67" path="res://assets/music/dale_comes_to_life.mp3" id="1_3hxwm"]
+[ext_resource type="Script" path="res://scripts/ui_scripts/music_player.gd" id="2_hfkhu"]
+[ext_resource type="AudioStream" uid="uid://dghmpqnk8tqdr" path="res://assets/music/beat_em_up_at_the_pass.mp3" id="2_y6phb"]
+[ext_resource type="AudioStream" uid="uid://bxeaqhgl43yd2" path="res://assets/music/beat_em_up_at_the_pass_boss.mp3" id="3_e3erf"]
+[ext_resource type="AudioStream" uid="uid://cgvcyejl63s7e" path="res://assets/music/dales_a_lonesome_cowboy.mp3" id="4_4pvpb"]
+[ext_resource type="AudioStream" uid="uid://wojpqkwivfjf" path="res://assets/music/mosey_into_town.mp3" id="6_jcvf2"]
+
+[node name="music_player" type="Node"]
+script = ExtResource("2_hfkhu")
+
+[node name="FightMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_y6phb")
+
+[node name="BossMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_e3erf")
+
+[node name="OverworldMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_4pvpb")
+
+[node name="TitleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_3hxwm")
+
+[node name="TownMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_jcvf2")
