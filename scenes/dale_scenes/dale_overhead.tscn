@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhyortiju50o7"]
+[gd_scene load_steps=9 format=3 uid="uid://dhyortiju50o7"]
 
 [ext_resource type="Texture2D" uid="uid://o2qf1p0b6p4s" path="res://assets/sprites/dale_sprites/dale_overhead.png" id="1_812k2"]
 [ext_resource type="Script" path="res://scripts/dale_scripts/dale_overhead.gd" id="1_hue7g"]
+[ext_resource type="PackedScene" uid="uid://cpn263ospv7ck" path="res://scenes/ui_scenes/player_ui.tscn" id="3_rdnnr"]
 
 [sub_resource type="Animation" id="Animation_vykc1"]
 length = 0.001
@@ -85,3 +86,5 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_eom4u")
+
+[node name="player_ui" parent="." instance=ExtResource("3_rdnnr")]

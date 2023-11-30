@@ -1,8 +1,0 @@
-[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bweby8cgqdby7"]
-
-[ext_resource type="FontFile" uid="uid://5gakdth474y7" path="res://assets/fonts/cruft.ttf" id="1_54fqh"]
-
-[resource]
-font = ExtResource("1_54fqh")
-font_size = 32
-font_color = Color(0.85098, 0.827451, 0.85098, 1)

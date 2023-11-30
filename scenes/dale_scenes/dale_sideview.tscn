@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://blveoq1jtp0cn"]
+[gd_scene load_steps=31 format=3 uid="uid://blveoq1jtp0cn"]
 
 [ext_resource type="Script" path="res://scripts/dale_scripts/dale_sideview.gd" id="1_kjua3"]
 [ext_resource type="Texture2D" uid="uid://buxxbljhn7nsf" path="res://assets/sprites/dale_sprites/dale_sideview.png" id="2_v7e0u"]
+[ext_resource type="PackedScene" uid="uid://cpn263ospv7ck" path="res://scenes/ui_scenes/player_ui.tscn" id="3_4l10r"]
 
 [sub_resource type="Animation" id="Animation_fnsm6"]
 length = 0.001
@@ -434,7 +435,6 @@ size = Vector2(33, 34)
 script = ExtResource("1_kjua3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
 limit_left = -1728
 limit_right = 6080
 limit_bottom = 768
@@ -475,6 +475,8 @@ one_shot = true
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 0.28
 one_shot = true
+
+[node name="player_ui" parent="." instance=ExtResource("3_4l10r")]
 
 [connection signal="body_entered" from="DamageArea2D" to="." method="_on_damage_area_2d_body_entered"]
 [connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]

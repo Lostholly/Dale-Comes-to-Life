@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Dale-Comes-to-Life"
-run/main_scene="res://scenes/site_scenes/village.tscn"
+run/main_scene="res://scenes/ui_scenes/title_menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 PlayerAutoload="*res://test_scenes/player/player_autoload.tscn"
 DaleAutoload="*res://scenes/dale_scenes/dale_autoload.tscn"
 MusicPlayer="*res://scenes/ui_scenes/music_player.tscn"
+
+[display]
+
+window/size/mode=2
+window/stretch/mode="viewport"
 
 [input]
 

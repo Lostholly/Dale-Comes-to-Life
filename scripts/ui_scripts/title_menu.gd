@@ -26,6 +26,10 @@ func _ready():
 		currentVolume = (musicPlayer.volume / 20) + 1
 	volumeSlider.value = currentVolume
 
+# We need to make sure we unpause the scene and reset health.
+	get_tree().paused = false
+	globalVariables.health = 10
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
@@ -57,3 +61,6 @@ func _on_volume_button_pressed():
 func _on_volume_return_pressed():
 	musicVolume.hide()
 	titleMenu.show()
+
+
+# Lastly we need our death buttons. 

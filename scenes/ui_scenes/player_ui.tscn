@@ -1,0 +1,312 @@
+[gd_scene load_steps=14 format=3 uid="uid://cpn263ospv7ck"]
+
+[ext_resource type="Script" path="res://scripts/ui_scripts/player_ui.gd" id="1_l66kl"]
+[ext_resource type="Theme" uid="uid://l465i67mvrkl" path="res://assets/ui_assets/ui_theme.tres" id="1_lq8sf"]
+[ext_resource type="FontFile" uid="uid://5gakdth474y7" path="res://assets/fonts/cruft.ttf" id="2_neubc"]
+[ext_resource type="Texture2D" uid="uid://p3svsjlfmuit" path="res://assets/ui_assets/death_screen.png" id="3_we4p3"]
+[ext_resource type="Texture2D" uid="uid://cbxywrtnkepxs" path="res://assets/ui_assets/health_bar.png" id="4_o2vud"]
+[ext_resource type="FontFile" uid="uid://bc3igacj3cd7s" path="res://assets/fonts/Habbo.ttf" id="4_ugjog"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_tksls"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_sgh83"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qu8xy"]
+font = ExtResource("2_neubc")
+font_size = 84
+font_color = Color(0.435294, 0.592157, 0.368627, 1)
+outline_color = Color(0.164706, 0.12549, 0.164706, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_intl7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0mp4l"]
+font = ExtResource("4_ugjog")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_mmjdq"]
+font_size = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_8hcxq"]
+font_size = 8
+
+[node name="player_ui" type="CanvasLayer"]
+process_mode = 3
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+script = ExtResource("1_l66kl")
+
+[node name="MenuControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" type="TextureRect" parent="MenuControl"]
+visible = false
+modulate = Color(0.85098, 0.827451, 0.85098, 1)
+offset_right = 1213.0
+offset_bottom = 673.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("CanvasTexture_tksls")
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuControl/MainMenu"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 1213.0
+offset_bottom = 674.0
+theme = ExtResource("1_lq8sf")
+
+[node name="TextureRect" type="TextureRect" parent="MenuControl/MainMenu/MarginContainer"]
+modulate = Color(0.164706, 0.12549, 0.164706, 1)
+layout_mode = 2
+texture = SubResource("CanvasTexture_sgh83")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuControl/MainMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MenuControl/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuControl/MainMenu/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+alignment = 1
+
+[node name="MenuLabel" type="Label" parent="MenuControl/MainMenu/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "  Main Menu   "
+label_settings = SubResource("LabelSettings_qu8xy")
+
+[node name="ReturnButton" type="Button" parent="MenuControl/MainMenu/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Close Menu"
+
+[node name="ControlsButton" type="Button" parent="MenuControl/MainMenu/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Controls"
+
+[node name="VolumeButton" type="Button" parent="MenuControl/MainMenu/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume
+"
+
+[node name="ExitButton" type="Button" parent="MenuControl/MainMenu/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit Game"
+
+[node name="Controls" type="TextureRect" parent="MenuControl"]
+visible = false
+modulate = Color(0.85098, 0.827451, 0.85098, 1)
+offset_right = 1227.0
+offset_bottom = 684.0
+texture = SubResource("CanvasTexture_intl7")
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuControl/Controls"]
+layout_mode = 0
+offset_right = 1227.0
+offset_bottom = 666.0
+theme = ExtResource("1_lq8sf")
+
+[node name="TextureRect" type="TextureRect" parent="MenuControl/Controls/MarginContainer"]
+modulate = Color(0.164706, 0.12549, 0.164706, 1)
+layout_mode = 2
+texture = SubResource("CanvasTexture_sgh83")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuControl/Controls/MarginContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MenuControl/Controls/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuControl/Controls/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+alignment = 1
+
+[node name="HeadingLabel" type="Label" parent="MenuControl/Controls/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Controls
+"
+label_settings = SubResource("LabelSettings_qu8xy")
+
+[node name="ControlsLabel" type="Label" parent="MenuControl/Controls/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Move - WASD or Arrow Keys
+Attack - Left click or Shift
+Up Attack - W/Up + Left click/Shift
+Down Attack = S/Down + Left click/shift
+Jump - Spacebar
+Interact/Talk/Leave Map - E or Enter
+Pause/Menu - G or M
+"
+label_settings = SubResource("LabelSettings_0mp4l")
+
+[node name="Space2" type="Label" parent="MenuControl/Controls/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "
+"
+label_settings = SubResource("LabelSettings_mmjdq")
+
+[node name="ControlsReturnButton" type="Button" parent="MenuControl/Controls/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Go Back
+"
+
+[node name="Space" type="Label" parent="MenuControl/Controls/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "
+"
+label_settings = SubResource("LabelSettings_8hcxq")
+
+[node name="VolumeControl" type="TextureRect" parent="MenuControl"]
+visible = false
+modulate = Color(0.85098, 0.827451, 0.85098, 1)
+offset_left = 7.0
+offset_top = 16.0
+offset_right = 1220.0
+offset_bottom = 440.0
+texture = SubResource("CanvasTexture_tksls")
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuControl/VolumeControl"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 1213.0
+offset_bottom = 424.0
+theme = ExtResource("1_lq8sf")
+
+[node name="TextureRect" type="TextureRect" parent="MenuControl/VolumeControl/MarginContainer"]
+modulate = Color(0.164706, 0.12549, 0.164706, 1)
+layout_mode = 2
+texture = SubResource("CanvasTexture_sgh83")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuControl/VolumeControl/MarginContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MenuControl/VolumeControl/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuControl/VolumeControl/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="MenuControl/VolumeControl/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Music Volume"
+label_settings = SubResource("LabelSettings_qu8xy")
+
+[node name="Space" type="Label" parent="MenuControl/VolumeControl/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "
+"
+label_settings = SubResource("LabelSettings_8hcxq")
+
+[node name="VolumeSlider" type="HSlider" parent="MenuControl/VolumeControl/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Space2" type="Label" parent="MenuControl/VolumeControl/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "
+"
+label_settings = SubResource("LabelSettings_8hcxq")
+
+[node name="VolumeReturn" type="Button" parent="MenuControl/VolumeControl/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Go Back
+"
+
+[node name="DeathScreen" type="TextureRect" parent="MenuControl"]
+visible = false
+modulate = Color(0.85098, 0.827451, 0.85098, 1)
+offset_top = -120.0
+offset_right = 1213.0
+offset_bottom = 910.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("CanvasTexture_tksls")
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuControl/DeathScreen"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 1213.0
+offset_bottom = 674.0
+theme = ExtResource("1_lq8sf")
+
+[node name="TextureRect" type="TextureRect" parent="MenuControl/DeathScreen/MarginContainer"]
+modulate = Color(0.164706, 0.12549, 0.164706, 1)
+layout_mode = 2
+texture = SubResource("CanvasTexture_sgh83")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuControl/DeathScreen/MarginContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MenuControl/DeathScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuControl/DeathScreen/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+alignment = 1
+
+[node name="DeathLabel" type="Label" parent="MenuControl/DeathScreen/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "  You Died!  "
+label_settings = SubResource("LabelSettings_qu8xy")
+
+[node name="TextureRect" type="TextureRect" parent="MenuControl/DeathScreen/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_we4p3")
+expand_mode = 5
+
+[node name="RetryButton" type="Button" parent="MenuControl/DeathScreen/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Try Again?"
+
+[node name="DeathExitButton" type="Button" parent="MenuControl/DeathScreen/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit Game"
+
+[node name="Space" type="Label" parent="MenuControl/DeathScreen/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "
+"
+label_settings = SubResource("LabelSettings_8hcxq")
+
+[node name="HealthBar" type="Sprite2D" parent="."]
+position = Vector2(282, 70)
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("4_o2vud")
+vframes = 24
+frame = 13
+
+[connection signal="pressed" from="MenuControl/MainMenu/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="MenuControl/MainMenu/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="MenuControl/MainMenu/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/VolumeButton" to="." method="_on_volume_button_pressed"]
+[connection signal="pressed" from="MenuControl/MainMenu/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MenuControl/Controls/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/ControlsReturnButton" to="." method="_on_controls_return_button_pressed"]
+[connection signal="value_changed" from="MenuControl/VolumeControl/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="pressed" from="MenuControl/VolumeControl/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/VolumeReturn" to="." method="_on_volume_return_pressed"]
+[connection signal="pressed" from="MenuControl/DeathScreen/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="MenuControl/DeathScreen/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/DeathExitButton" to="." method="_on_death_exit_button_pressed"]

@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://wojpqkwivfjf" path="res://assets/music/mosey_into_town.mp3" id="6_jcvf2"]
 
 [node name="music_player" type="Node"]
+process_mode = 3
 script = ExtResource("2_hfkhu")
 
 [node name="FightMusic" type="AudioStreamPlayer" parent="."]

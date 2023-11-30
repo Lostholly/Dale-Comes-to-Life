@@ -24,6 +24,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
+
 	# This section deals with jumping.
 	if state != "attacked":
 		if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -55,6 +56,8 @@ func _physics_process(delta):
 			velocity.x = speed
 			if state != "jumping":
 				state = "walking"
+		else:
+			velocity.x = 0
 
 	# We need to track our direction for animation purposes.
 		if Input.is_action_pressed("walk_left") && Input.is_action_pressed("walk_right"):
@@ -70,6 +73,9 @@ func _physics_process(delta):
 		velocity.x = 0
 		if state != "jumping":
 			state = "idle"
+			
+	if state != "jumping" && velocity.x == 0:
+		state = "idle"
 
 
 	# This is our attacking section. This monstrosity controls our attack animations.

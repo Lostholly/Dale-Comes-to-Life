@@ -15,3 +15,9 @@ res://scenes/ui_scenes/music_player.tscn
 res://scripts/ui_scripts/music_player.gd
 res://scripts/environment_scripts/enemy_encounter_1.gd
 res://scripts/environment_scripts/overworld.gd
+res://scenes/ui_scenes/user_menu.tscn
+res://scenes/ui_scenes/TEST.tscn
+res://scenes/ui_scenes/player_ui.tscn
+res://scripts/ui_scripts/player_ui.gd
+res://scripts/dale_scripts/dale_autoload.gd
+res://scripts/dale_scripts/dale_sideview.gd
