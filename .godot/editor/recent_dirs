@@ -1,6 +1,6 @@
+res://assets/ui_assets
 res://assets/fonts
 res://scripts/ui_scripts
-res://assets/ui_assets
 res://scripts/environment_scripts
 res://scenes/ui_scenes
 res://assets/music
@@ -13,5 +13,3 @@ res://scripts/dale_scripts
 C:/Users/jerem/OneDrive/Documents/Jeremy's Projects/Game Design Projects/Dale Comes to Life/Builds
 res://scenes/dale_scenes
 res://assets/sprites
-res://test_scenes/player
-res://test_scenes/sites

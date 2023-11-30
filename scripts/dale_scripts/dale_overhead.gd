@@ -10,8 +10,17 @@ var direction = "right"
 # We need to get our animations onto a variable.
 @onready var animations = $AnimationPlayer
 
+# We need our global variables to set our position.
+@onready var globalVariables = $"/root/DaleAutoload"
+
+# We need to set a start position.
+@onready var startPosition = globalVariables.overworldStart
+
+func _ready():
+	position = startPosition
 
 func _physics_process(_delta):
+	print(position)
 
 	if direction == "right":
 		rotation_degrees = 90

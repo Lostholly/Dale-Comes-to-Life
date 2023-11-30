@@ -52,6 +52,7 @@ grow_vertical = 2
 [node name="MainMenu" type="TextureRect" parent="MenuControl"]
 visible = false
 modulate = Color(0.85098, 0.827451, 0.85098, 1)
+layout_mode = 0
 offset_right = 1213.0
 offset_bottom = 673.0
 size_flags_horizontal = 4
@@ -108,6 +109,7 @@ text = "Exit Game"
 [node name="Controls" type="TextureRect" parent="MenuControl"]
 visible = false
 modulate = Color(0.85098, 0.827451, 0.85098, 1)
+layout_mode = 0
 offset_right = 1227.0
 offset_bottom = 684.0
 texture = SubResource("CanvasTexture_intl7")
@@ -175,6 +177,7 @@ label_settings = SubResource("LabelSettings_8hcxq")
 [node name="VolumeControl" type="TextureRect" parent="MenuControl"]
 visible = false
 modulate = Color(0.85098, 0.827451, 0.85098, 1)
+layout_mode = 0
 offset_left = 7.0
 offset_top = 16.0
 offset_right = 1220.0
@@ -237,6 +240,7 @@ text = "Go Back
 [node name="DeathScreen" type="TextureRect" parent="MenuControl"]
 visible = false
 modulate = Color(0.85098, 0.827451, 0.85098, 1)
+layout_mode = 0
 offset_top = -120.0
 offset_right = 1213.0
 offset_bottom = 910.0
@@ -294,6 +298,53 @@ text = "
 "
 label_settings = SubResource("LabelSettings_8hcxq")
 
+[node name="LeaveMapMenu" type="TextureRect" parent="MenuControl"]
+visible = false
+modulate = Color(0.85098, 0.827451, 0.85098, 1)
+offset_right = 1213.0
+offset_bottom = 446.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("CanvasTexture_tksls")
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuControl/LeaveMapMenu"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 1213.0
+offset_bottom = 446.0
+theme = ExtResource("1_lq8sf")
+
+[node name="TextureRect" type="TextureRect" parent="MenuControl/LeaveMapMenu/MarginContainer"]
+modulate = Color(0.164706, 0.12549, 0.164706, 1)
+layout_mode = 2
+texture = SubResource("CanvasTexture_sgh83")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuControl/LeaveMapMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MenuControl/LeaveMapMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuControl/LeaveMapMenu/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+alignment = 1
+
+[node name="LeaveLabel" type="Label" parent="MenuControl/LeaveMapMenu/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Leave This Map?"
+label_settings = SubResource("LabelSettings_qu8xy")
+
+[node name="YesLeaveButton" type="Button" parent="MenuControl/LeaveMapMenu/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Yes"
+
+[node name="NoLeaveButton" type="Button" parent="MenuControl/LeaveMapMenu/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "No"
+
 [node name="HealthBar" type="Sprite2D" parent="."]
 position = Vector2(282, 70)
 scale = Vector2(2.2, 2.2)
@@ -310,3 +361,5 @@ frame = 13
 [connection signal="pressed" from="MenuControl/VolumeControl/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/VolumeReturn" to="." method="_on_volume_return_pressed"]
 [connection signal="pressed" from="MenuControl/DeathScreen/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="MenuControl/DeathScreen/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/DeathExitButton" to="." method="_on_death_exit_button_pressed"]
+[connection signal="pressed" from="MenuControl/LeaveMapMenu/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/YesLeaveButton" to="." method="_on_yes_leave_button_pressed"]
+[connection signal="pressed" from="MenuControl/LeaveMapMenu/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/NoLeaveButton" to="." method="_on_no_leave_button_pressed"]

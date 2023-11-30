@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwojrj030wtpi"]
+[gd_scene load_steps=12 format=3 uid="uid://bwojrj030wtpi"]
 
 [ext_resource type="TileSet" uid="uid://c3kwhxl3y6gjq" path="res://assets/scenery/sideview_tileset/desert_tileset.tres" id="1_li8ad"]
 [ext_resource type="Texture2D" uid="uid://bdasvcsbvmpt6" path="res://assets/scenery/backgrounds/sky.png" id="2_mxlwa"]
@@ -6,6 +6,50 @@
 [ext_resource type="PackedScene" uid="uid://blveoq1jtp0cn" path="res://scenes/dale_scenes/dale_sideview.tscn" id="2_ythp1"]
 [ext_resource type="Texture2D" uid="uid://cdjb8lqllqn1q" path="res://assets/scenery/backgrounds/far_mountains.png" id="3_1btos"]
 [ext_resource type="Texture2D" uid="uid://dikwcct0qbp5x" path="res://assets/scenery/backgrounds/clouds.png" id="4_ax3lg"]
+[ext_resource type="Texture2D" uid="uid://c4c0h43moijfe" path="res://assets/ui_assets/interact_graphic.png" id="7_boxxg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bsxgk"]
+radius = 42.0
+height = 140.0
+
+[sub_resource type="Animation" id="Animation_h7ecd"]
+resource_name = "interact"
+length = 0.8
+loop_mode = 1
+step = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_nlqtw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rfr8r"]
+_data = {
+"RESET": SubResource("Animation_nlqtw"),
+"interact": SubResource("Animation_h7ecd")
+}
 
 [node name="village" type="TileMap"]
 tile_set = ExtResource("1_li8ad")
@@ -50,3 +94,24 @@ metadata/_edit_lock_ = true
 
 [node name="dale_sideview" parent="." instance=ExtResource("2_ythp1")]
 position = Vector2(-1459, 609)
+
+[node name="ExitArea2D" type="Area2D" parent="."]
+position = Vector2(6072, 332)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea2D"]
+shape = SubResource("CapsuleShape2D_bsxgk")
+
+[node name="Sprite2D" type="Sprite2D" parent="ExitArea2D"]
+visible = false
+position = Vector2(-43, -42)
+texture = ExtResource("7_boxxg")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ExitArea2D"]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_rfr8r")
+}
+
+[connection signal="area_entered" from="ExitArea2D" to="." method="_on_exit_area_2d_area_entered"]
+[connection signal="area_exited" from="ExitArea2D" to="." method="_on_exit_area_2d_area_exited"]

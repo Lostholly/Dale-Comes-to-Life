@@ -104,4 +104,4 @@ layer_0/tile_data = PackedInt32Array(0, 262145, 1, 65536, 262145, 1, 131072, 262
 script = ExtResource("2_xbpe1")
 
 [node name="dale_overhead" parent="." instance=ExtResource("2_2fkr5")]
-position = Vector2(40, 358)
+position = Vector2(34, 357)
