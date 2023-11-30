@@ -1,3 +1,9 @@
+HSlider
+Label
+HBoxContainer
+MarginContainer
+TextureRect
+VBoxContainer
 AudioStreamPlayer
 AudioStreamPlayer2D
 Node
@@ -6,10 +12,6 @@ Sprite2D
 TileMap
 Button
 Camera2D
-Label
-VBoxContainer
-TextureRect
-MarginContainer
 CenterContainer
 Timer
 CollisionShape2D

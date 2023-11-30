@@ -64,6 +64,7 @@ Button/styles/focus = SubResource("StyleBoxFlat_iqjrw")
 Button/styles/hover = SubResource("StyleBoxFlat_l8boo")
 Button/styles/normal = SubResource("StyleBoxFlat_rgve3")
 Button/styles/pressed = SubResource("StyleBoxFlat_d2loh")
+HSlider/icons/grabber = null
 MarginContainer/constants/margin_bottom = 8
 MarginContainer/constants/margin_left = 8
 MarginContainer/constants/margin_right = 8

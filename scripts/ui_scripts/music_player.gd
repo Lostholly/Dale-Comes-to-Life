@@ -3,13 +3,15 @@ extends Node
 # We need to get our scene to know what to play.
 @onready var globalVariables = get_node("/root/DaleAutoload")
 
-# We need each song assigned to a variable.
-
+# We need each song assigned to a variable
 @onready var fightMusic = $FightMusic
 @onready var bossMusic = $BossMusic
 @onready var overworldMusic = $OverworldMusic
 @onready var titleMusic = $TitleMusic
 @onready var townMusic = $TownMusic
+
+# We need a volume variable.
+var volume = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,3 +38,10 @@ func _process(_delta):
 		fightMusic.play()
 	elif globalVariables.currentScene != "enemyEncounter1":
 		fightMusic.stop()
+
+	# We have to control our volume for the volume slider.
+	fightMusic.volume_db = volume
+	bossMusic.volume_db = volume
+	overworldMusic.volume_db = volume
+	titleMusic.volume_db = volume
+	townMusic.volume_db = volume

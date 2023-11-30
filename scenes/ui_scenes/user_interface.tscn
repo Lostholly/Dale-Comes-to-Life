@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://yemfpnrbusjc"]
-
-[ext_resource type="Theme" uid="uid://l465i67mvrkl" path="res://assets/ui_assets/ui_theme.tres" id="1_lm477"]
-
-[node name="user_interface" type="MarginContainer"]
-offset_right = 7.0
-offset_bottom = 6.0
-theme = ExtResource("1_lm477")
