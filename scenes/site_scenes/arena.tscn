@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=3 uid="uid://la48ey4jykrh"]
+
+[ext_resource type="Texture2D" uid="uid://cdjb8lqllqn1q" path="res://assets/scenery/backgrounds/far_mountains.png" id="1_bkmy7"]
+[ext_resource type="Texture2D" uid="uid://dikwcct0qbp5x" path="res://assets/scenery/backgrounds/clouds.png" id="2_kipd3"]
+[ext_resource type="Texture2D" uid="uid://bdasvcsbvmpt6" path="res://assets/scenery/backgrounds/sky.png" id="3_024kj"]
+[ext_resource type="Texture2D" uid="uid://c4c0h43moijfe" path="res://assets/ui_assets/interact_graphic.png" id="4_2xonp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g75f3"]
+radius = 42.0
+height = 140.0
+
+[sub_resource type="Animation" id="Animation_nlqtw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_h7ecd"]
+resource_name = "interact"
+length = 0.8
+loop_mode = 1
+step = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rfr8r"]
+_data = {
+"RESET": SubResource("Animation_nlqtw"),
+"interact": SubResource("Animation_h7ecd")
+}
+
+[node name="arena" type="TileMap"]
+format = 2
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(1400, -400)
+scale = Vector2(1.16, 1.16)
+transform = Transform2D(1.16, 0, 0, 1.16, 1400, -400)
+scroll_base_scale = Vector2(0.5, 0.5)
+
+[node name="MountainLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -1
+position = Vector2(235, 134)
+metadata/_edit_group_ = true
+
+[node name="MountainSprite2D" type="Sprite2D" parent="ParallaxBackground/MountainLayer"]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_bkmy7")
+
+[node name="CloudLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(229, 357)
+motion_scale = Vector2(0.8, 0.8)
+metadata/_edit_group_ = true
+
+[node name="CloudSprite2D" type="Sprite2D" parent="ParallaxBackground/CloudLayer"]
+z_index = -2
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_kipd3")
+
+[node name="SkyLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.9, 0.9)
+
+[node name="SkySprite2D" type="Sprite2D" parent="ParallaxBackground/SkyLayer"]
+z_index = -3
+position = Vector2(248, 377)
+texture = ExtResource("3_024kj")
+metadata/_edit_lock_ = true
+
+[node name="ExitArea2D" type="Area2D" parent="."]
+position = Vector2(6072, 332)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea2D"]
+shape = SubResource("CapsuleShape2D_g75f3")
+
+[node name="Sprite2D" type="Sprite2D" parent="ExitArea2D"]
+visible = false
+position = Vector2(-43, -42)
+texture = ExtResource("4_2xonp")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ExitArea2D"]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_rfr8r")
+}

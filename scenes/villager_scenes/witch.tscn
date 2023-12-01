@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://koe0ignv35fv"]
+
+[ext_resource type="Texture2D" uid="uid://cm1kxst34rdv0" path="res://assets/sprites/villager_sprites/witch.png" id="1_deok8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jppfw"]
+radius = 42.0
+height = 92.0
+
+[node name="witch" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_deok8")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_jppfw")

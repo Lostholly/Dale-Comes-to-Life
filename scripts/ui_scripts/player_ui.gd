@@ -60,13 +60,13 @@ func _process(_delta):
 	# This section is dealing with exit interactions. It simply makes the dialogue box appear.
 	if interacting == false:
 		if Input.is_action_just_pressed("interact") && leaveMenu.is_visible_in_tree() == false:
-			if globalVariables.currentInteraction == "villageExit" || globalVariables.currentInteraction == "enemy1Exit" || globalVariables.currentInteraction == "villageEntrance" || globalVariables.currentInteraction == "enemy1Entrance" || globalVariables.currentInteraction == "tutorialExit":
+			if globalVariables.currentInteraction == "villageExit" || globalVariables.currentInteraction == "enemy1Exit" || globalVariables.currentInteraction == "villageEntrance" || globalVariables.currentInteraction == "enemy1Entrance" || globalVariables.currentInteraction == "tutorialExit" || globalVariables.currentInteraction == "tutorialEntrance":
 				leaveMenu.show()
 				get_tree().paused = true
 				interacting = true
 	elif interacting == true:
 		if Input.is_action_just_pressed("interact") && leaveMenu.is_visible_in_tree() == true:
-			if globalVariables.currentInteraction == "villageExit" || globalVariables.currentInteraction == "enemy1Exit" || globalVariables.currentInteraction == "villageEntrance" || globalVariables.currentInteraction == "enemy1Entrance"|| globalVariables.currentInteraction == "tutorialExit":
+			if globalVariables.currentInteraction == "villageExit" || globalVariables.currentInteraction == "enemy1Exit" || globalVariables.currentInteraction == "villageEntrance" || globalVariables.currentInteraction == "enemy1Entrance"|| globalVariables.currentInteraction == "tutorialExit" || globalVariables.currentInteraction == "tutorialEntrance":
 				leaveMenu.hide()
 				get_tree().paused = false
 				interacting = false
@@ -81,6 +81,8 @@ func _process(_delta):
 		leaveText.text = "Search for the beet?"
 	if globalVariables.currentInteraction == "tutorialExit":
 		leaveText.text = "Head to the village?"
+	if globalVariables.currentInteraction == "tutorialEntrance":
+		leaveText.text = "Return to the beginning?"
 
 
 	# This will control our dialogue text.
@@ -239,6 +241,8 @@ func _on_yes_leave_button_pressed():
 		get_tree().change_scene_to_file("res://scenes/site_scenes/enemy_encounter_1.tscn")
 	if globalVariables.currentInteraction == "tutorialExit":
 		get_tree().change_scene_to_file("res://scenes/site_scenes/village.tscn")
+	if globalVariables.currentInteraction == "tutorialEntrance":
+		get_tree().change_scene_to_file("res://scenes/site_scenes/tutorial_area.tscn")
 
 # Closes leave menu.
 func _on_no_leave_button_pressed():

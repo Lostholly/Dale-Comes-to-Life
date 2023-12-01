@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6u04v3p2ge5m"]
+
+[ext_resource type="Texture2D" uid="uid://d0rx2rqm2i7da" path="res://assets/sprites/villager_sprites/strongman.png" id="1_7vj1y"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u4tsv"]
+radius = 42.0
+height = 92.0
+
+[node name="strongman" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7vj1y")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_u4tsv")

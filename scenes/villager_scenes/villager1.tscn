@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dule74r1txqdk"]
+
+[ext_resource type="Texture2D" uid="uid://bp24pmmudt1m2" path="res://assets/sprites/villager_sprites/villager1.png" id="1_ys11i"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kuei1"]
+radius = 42.0
+height = 92.0
+
+[node name="villager1" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ys11i")
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_kuei1")

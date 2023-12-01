@@ -5,6 +5,8 @@ extends TileMap
 # We need to assign our interaction sprites to variables.
 @onready var exitInteract = $ExitArea2D/Sprite2D
 @onready var exitAnimate = $ExitArea2D/AnimationPlayer
+@onready var tutorialInteract = $EntranceArea/Sprite2D
+@onready var tutorialAnimate = $EntranceArea/AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,4 +29,17 @@ func _on_exit_area_2d_area_entered(_area):
 func _on_exit_area_2d_area_exited(_area):
 	exitInteract.hide()
 	exitAnimate.stop()
+	globalVariables.currentInteraction = ""
+
+
+func _on_entrance_area_area_entered(_area):
+	tutorialInteract.show()
+	tutorialAnimate.play("interact")
+	globalVariables.currentInteraction = "tutorialEntrance"
+	globalVariables.sideviewStart = Vector2(9801, 229)
+
+
+func _on_entrance_area_area_exited(_area):
+	tutorialInteract.hide()
+	tutorialAnimate.stop()
 	globalVariables.currentInteraction = ""

@@ -22,11 +22,11 @@ var facing = "right"
 func _ready():
 	# This starts Dale in the appropriate location.
 	position = globalVariables.sideviewStart
-	if position == Vector2(6040, 357):
+	if position == Vector2(6040, 357) || position == Vector2(9801, 229):
 		facing = "left"
 
 func _physics_process(delta):
-	#print(position)
+	print(position)
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta

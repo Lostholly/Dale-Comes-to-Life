@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bwojrj030wtpi"]
+[gd_scene load_steps=17 format=3 uid="uid://bwojrj030wtpi"]
 
 [ext_resource type="TileSet" uid="uid://c3kwhxl3y6gjq" path="res://assets/scenery/sideview_tileset/desert_tileset.tres" id="1_li8ad"]
 [ext_resource type="Texture2D" uid="uid://bdasvcsbvmpt6" path="res://assets/scenery/backgrounds/sky.png" id="2_mxlwa"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://cdjb8lqllqn1q" path="res://assets/scenery/backgrounds/far_mountains.png" id="3_1btos"]
 [ext_resource type="Texture2D" uid="uid://dikwcct0qbp5x" path="res://assets/scenery/backgrounds/clouds.png" id="4_ax3lg"]
 [ext_resource type="Texture2D" uid="uid://c4c0h43moijfe" path="res://assets/ui_assets/interact_graphic.png" id="7_boxxg"]
+[ext_resource type="PackedScene" uid="uid://dule74r1txqdk" path="res://scenes/villager_scenes/villager1.tscn" id="8_c6t2b"]
+[ext_resource type="PackedScene" uid="uid://c6dek27xie8fp" path="res://scenes/villager_scenes/villager2.tscn" id="9_7i1gm"]
+[ext_resource type="PackedScene" uid="uid://d1yyhf8b25iwi" path="res://scenes/villager_scenes/village_elder.tscn" id="10_jc3gy"]
+[ext_resource type="PackedScene" uid="uid://yfdwcec282kq" path="res://scenes/ui_scenes/health_drop.tscn" id="11_hw1o6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bsxgk"]
 radius = 42.0
@@ -51,6 +55,10 @@ _data = {
 "interact": SubResource("Animation_h7ecd")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f3pos"]
+radius = 42.0
+height = 108.0
+
 [node name="village" type="TileMap"]
 tile_set = ExtResource("1_li8ad")
 format = 2
@@ -92,11 +100,9 @@ position = Vector2(248, 377)
 texture = ExtResource("2_mxlwa")
 metadata/_edit_lock_ = true
 
-[node name="dale_sideview" parent="." instance=ExtResource("2_ythp1")]
-position = Vector2(-1459, 609)
-
 [node name="ExitArea2D" type="Area2D" parent="."]
 position = Vector2(6072, 332)
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea2D"]
 shape = SubResource("CapsuleShape2D_bsxgk")
@@ -113,5 +119,82 @@ libraries = {
 "": SubResource("AnimationLibrary_rfr8r")
 }
 
+[node name="EntranceArea" type="Area2D" parent="."]
+position = Vector2(6072, 332)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntranceArea"]
+position = Vector2(-7775, 254)
+shape = SubResource("CapsuleShape2D_bsxgk")
+
+[node name="Sprite2D" type="Sprite2D" parent="EntranceArea"]
+visible = false
+position = Vector2(-7713, 181)
+texture = ExtResource("7_boxxg")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EntranceArea"]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_rfr8r")
+}
+
+[node name="village_sign1" type="Area2D" parent="."]
+position = Vector2(476, 412)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="village_sign1"]
+shape = SubResource("CapsuleShape2D_f3pos")
+
+[node name="Sprite2D" type="Sprite2D" parent="village_sign1"]
+visible = false
+position = Vector2(-43, -42)
+texture = ExtResource("7_boxxg")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="village_sign1"]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_rfr8r")
+}
+
+[node name="village_sign2" type="Area2D" parent="."]
+position = Vector2(5919, 352)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="village_sign2"]
+shape = SubResource("CapsuleShape2D_f3pos")
+
+[node name="Sprite2D" type="Sprite2D" parent="village_sign2"]
+visible = false
+position = Vector2(-43, -42)
+texture = ExtResource("7_boxxg")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="village_sign2"]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_rfr8r")
+}
+
+[node name="villager1" parent="." instance=ExtResource("8_c6t2b")]
+position = Vector2(3174, -96)
+
+[node name="villager2" parent="." instance=ExtResource("9_7i1gm")]
+position = Vector2(2487, -288)
+
+[node name="village_elder" parent="." instance=ExtResource("10_jc3gy")]
+position = Vector2(1192, 224)
+
+[node name="health_drop" parent="." instance=ExtResource("11_hw1o6")]
+position = Vector2(1889, -575)
+
+[node name="health_drop2" parent="." instance=ExtResource("11_hw1o6")]
+position = Vector2(2145, -575)
+
+[node name="dale_sideview" parent="." instance=ExtResource("2_ythp1")]
+position = Vector2(-1459, 609)
+
 [connection signal="area_entered" from="ExitArea2D" to="." method="_on_exit_area_2d_area_entered"]
 [connection signal="area_exited" from="ExitArea2D" to="." method="_on_exit_area_2d_area_exited"]
+[connection signal="area_entered" from="EntranceArea" to="." method="_on_entrance_area_area_entered"]
+[connection signal="area_exited" from="EntranceArea" to="." method="_on_entrance_area_area_exited"]

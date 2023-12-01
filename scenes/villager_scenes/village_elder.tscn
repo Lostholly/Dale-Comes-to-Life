@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1yyhf8b25iwi"]
+
+[ext_resource type="Texture2D" uid="uid://cgl7l2jtarhwd" path="res://assets/sprites/villager_sprites/old_man.png" id="1_rnqyo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dojqe"]
+radius = 42.0
+height = 92.0
+
+[node name="village_elder" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rnqyo")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_dojqe")
