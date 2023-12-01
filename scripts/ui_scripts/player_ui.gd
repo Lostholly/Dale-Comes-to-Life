@@ -88,13 +88,13 @@ func _process(_delta):
 	# This will control our dialogue text.
 	if interacting == false:
 		if Input.is_action_just_pressed("interact") && dialogueBox.is_visible_in_tree() == false:
-			if globalVariables.currentInteraction == "tSign1" || globalVariables.currentInteraction == "tSign2" || globalVariables.currentInteraction == "tSign3" || globalVariables.currentInteraction == "tSign4" || globalVariables.currentInteraction == "tSign5"|| globalVariables.currentInteraction == "tSign6" || globalVariables.currentInteraction == "tSign7"|| globalVariables.currentInteraction == "tSign8":
+			if globalVariables.currentInteraction == "tSign1" || globalVariables.currentInteraction == "tSign2" || globalVariables.currentInteraction == "tSign3" || globalVariables.currentInteraction == "tSign4" || globalVariables.currentInteraction == "tSign5"|| globalVariables.currentInteraction == "tSign6" || globalVariables.currentInteraction == "tSign7"|| globalVariables.currentInteraction == "tSign8" || globalVariables.currentInteraction == "vSign1" || globalVariables.currentInteraction == "vSign2":
 				dialogueBox.show()
 				get_tree().paused = true
 				interacting = true
 	elif interacting == true:
 		if Input.is_action_just_pressed("interact") && dialogueBox.is_visible_in_tree() == true:
-			if globalVariables.currentInteraction == "tSign1" || globalVariables.currentInteraction == "tSign2" || globalVariables.currentInteraction == "tSign3" || globalVariables.currentInteraction == "tSign4" || globalVariables.currentInteraction == "tSign5"|| globalVariables.currentInteraction == "tSign6" || globalVariables.currentInteraction == "tSign7"|| globalVariables.currentInteraction == "tSign8":
+			if globalVariables.currentInteraction == "tSign1" || globalVariables.currentInteraction == "tSign2" || globalVariables.currentInteraction == "tSign3" || globalVariables.currentInteraction == "tSign4" || globalVariables.currentInteraction == "tSign5"|| globalVariables.currentInteraction == "tSign6" || globalVariables.currentInteraction == "tSign7"|| globalVariables.currentInteraction == "tSign8" || globalVariables.currentInteraction == "vSign1" || globalVariables.currentInteraction == "vSign2":
 				dialogueBox.hide()
 				get_tree().paused = false
 				interacting = false
@@ -180,6 +180,29 @@ impression. Talk to the villagers. I believe in you.
 
 
 "
+
+	if globalVariables.currentInteraction == "vSign1":
+		dialogueText.text = "
+
+
+
+Village of First Light
+
+
+
+" 
+
+	if globalVariables.currentInteraction == "vSign2":
+		dialogueText.text = "
+
+
+
+The Great Valley lies beyond this point.
+
+
+
+" 
+
 
 # We need this to unpause the game and get rid of the menu.
 func _on_return_button_pressed():

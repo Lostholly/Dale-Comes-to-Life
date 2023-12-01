@@ -198,3 +198,7 @@ position = Vector2(-1459, 609)
 [connection signal="area_exited" from="ExitArea2D" to="." method="_on_exit_area_2d_area_exited"]
 [connection signal="area_entered" from="EntranceArea" to="." method="_on_entrance_area_area_entered"]
 [connection signal="area_exited" from="EntranceArea" to="." method="_on_entrance_area_area_exited"]
+[connection signal="body_entered" from="village_sign1" to="." method="_on_village_sign_1_body_entered"]
+[connection signal="body_exited" from="village_sign1" to="." method="_on_village_sign_1_body_exited"]
+[connection signal="body_entered" from="village_sign2" to="." method="_on_village_sign_2_body_entered"]
+[connection signal="body_exited" from="village_sign2" to="." method="_on_village_sign_2_body_exited"]

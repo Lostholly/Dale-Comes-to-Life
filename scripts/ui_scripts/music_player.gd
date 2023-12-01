@@ -9,6 +9,7 @@ extends Node
 @onready var overworldMusic = $OverworldMusic
 @onready var titleMusic = $TitleMusic
 @onready var townMusic = $TownMusic
+@onready var witchMusic = $WitchMusic
 
 # We need a volume variable.
 var volume = 0.0
@@ -46,3 +47,4 @@ func _process(_delta):
 	overworldMusic.volume_db = volume
 	titleMusic.volume_db = volume
 	townMusic.volume_db = volume
+	witchMusic.volume_db = volume

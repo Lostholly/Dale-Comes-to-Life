@@ -372,7 +372,6 @@ layout_mode = 2
 text = "No"
 
 [node name="DialogueBox" type="TextureRect" parent="MenuControl"]
-visible = false
 modulate = Color(0.85098, 0.827451, 0.85098, 1)
 offset_right = 1227.0
 offset_bottom = 612.0
@@ -409,12 +408,12 @@ label_settings = SubResource("LabelSettings_mmjdq")
 
 [node name="DialogueLabel" type="Label" parent="MenuControl/DialogueBox/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Dale, 
+text = "
 
-You may sometimes find floating hearts in your travels.
-These can replenish your health if you eat them. Tasty!
 
-- Dale
+
+The Great Valley lies beyond this point.
+
 
 
 "

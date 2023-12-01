@@ -1,6 +1,7 @@
+AnimationPlayer
+AudioStreamPlayer
 CollisionShape2D
 Area2D
-AnimationPlayer
 Sprite2D
 TileMap
 AnimationTree
@@ -18,7 +19,6 @@ HSlider
 HBoxContainer
 MarginContainer
 VBoxContainer
-AudioStreamPlayer
 AudioStreamPlayer2D
 Camera2D
 CenterContainer

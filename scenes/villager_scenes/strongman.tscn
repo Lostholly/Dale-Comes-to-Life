@@ -1,18 +1,113 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6u04v3p2ge5m"]
+[gd_scene load_steps=11 format=3 uid="uid://b6u04v3p2ge5m"]
 
 [ext_resource type="Texture2D" uid="uid://d0rx2rqm2i7da" path="res://assets/sprites/villager_sprites/strongman.png" id="1_7vj1y"]
+[ext_resource type="Script" path="res://scripts/villager_scripts/strongman.gd" id="1_i3ptf"]
+[ext_resource type="Texture2D" uid="uid://c4c0h43moijfe" path="res://assets/ui_assets/interact_graphic.png" id="2_faqum"]
+
+[sub_resource type="Animation" id="Animation_q2voo"]
+resource_name = "normal"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_7rdwt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x0t06"]
+_data = {
+"RESET": SubResource("Animation_7rdwt"),
+"normal": SubResource("Animation_q2voo")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u4tsv"]
 radius = 42.0
 height = 92.0
 
+[sub_resource type="Animation" id="Animation_8grjd"]
+resource_name = "interact"
+length = 0.8
+step = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_ulqa4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ej801"]
+_data = {
+"RESET": SubResource("Animation_ulqa4"),
+"interact": SubResource("Animation_8grjd")
+}
+
 [node name="strongman" type="Area2D"]
+script = ExtResource("1_i3ptf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_7vj1y")
 hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x0t06")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_u4tsv")
+
+[node name="InteractSprite" type="Sprite2D" parent="."]
+position = Vector2(-43, -42)
+texture = ExtResource("2_faqum")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InteractSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_ej801")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

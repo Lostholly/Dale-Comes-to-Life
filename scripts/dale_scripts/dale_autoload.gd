@@ -1,5 +1,9 @@
 extends Node
 
+# This variable will track our win state. When it reaches 3, we win.
+var treasuresFound = 0
+var beetStatus = "noBeets"
+
 # Gameplay variables.
 var health = 10
 var maxHealth = 10
