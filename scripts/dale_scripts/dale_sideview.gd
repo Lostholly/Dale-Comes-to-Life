@@ -19,7 +19,14 @@ var facing = "right"
 # We need to assign the camera to a variable to control it a bit.
 @onready var camera = $Camera2D
 
+func _ready():
+	# This starts Dale in the appropriate location.
+	position = globalVariables.sideviewStart
+	if position == Vector2(6040, 357):
+		facing = "left"
+
 func _physics_process(delta):
+	print(position)
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -164,6 +171,17 @@ func _physics_process(delta):
 		camera.limit_left = 0
 		camera.limit_right = 3904
 		if globalVariables.dalePosition.y < 256:
+			var tween = get_tree().create_tween()
+			tween.tween_property(camera, "offset", Vector2(0, 0), 0.15)
+		else:
+			var tween = get_tree().create_tween()
+			tween.tween_property(camera, "offset", Vector2(0, -80), 0.15)
+	if globalVariables.currentScene == "tutorial":
+		camera.limit_bottom = 751
+		camera.limit_top = -2000
+		camera.limit_left = 0
+		camera.limit_right = 9912
+		if globalVariables.dalePosition.y < -120:
 			var tween = get_tree().create_tween()
 			tween.tween_property(camera, "offset", Vector2(0, 0), 0.15)
 		else:

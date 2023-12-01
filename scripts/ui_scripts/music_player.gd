@@ -29,9 +29,10 @@ func _process(_delta):
 	elif globalVariables.currentScene != "village":
 		townMusic.stop()
 
-	if globalVariables.currentScene == "overworld" && overworldMusic.playing == false:
-		overworldMusic.play()
-	elif globalVariables.currentScene != "overworld":
+	if globalVariables.currentScene == "overworld" || globalVariables.currentScene == "tutorial": 
+		if overworldMusic.playing == false:
+			overworldMusic.play()
+	elif globalVariables.currentScene != "overworld" && globalVariables.currentScene != "tutorial":
 		overworldMusic.stop()
 
 	if globalVariables.currentScene == "enemyEncounter1" && fightMusic.playing == false:

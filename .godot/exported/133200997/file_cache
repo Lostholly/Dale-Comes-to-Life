@@ -1,5 +1,13 @@
 res://scenes/dale_scenes/dale_autoload.tscn::71033033a48cec66a80c538dcc89c5cc::1701016960::res://.godot/exported/133200997/export-7944b0a15f6ecdad1dc94cdcabe062e0-dale_autoload.scn
-res://scenes/dale_scenes/dale_sideview.tscn::2adfbfe95eef80229c61f042361ae1e4::1701032919::res://.godot/exported/133200997/export-e91cf839ccf1247901e22bceffa45191-dale_sideview.scn
-res://test_scenes/player/player_autoload.tscn::f3acdd16f8457fbdfa40ad8f65a2ebd0::1700513336::res://.godot/exported/133200997/export-ecb896d3908df91faf1cdfb700e6d1cf-player_autoload.scn
-res://test_scenes/sites/test_background.tres::e9c8769c5e719b7f8450d470e5822db2::1701016615::res://.godot/exported/133200997/export-40cadf3208ae75b4679209780a373814-test_background.res
-res://test_scenes/sites/test_background.tscn::def4a2b81af4e35a64ed723881d2a19d::1701032919::res://.godot/exported/133200997/export-1df658cfd49584c9d9a4437b591cf59a-test_background.scn
+res://scenes/dale_scenes/dale_sideview.tscn::2bab9210638bfb06c529432ca283ba30::1701393172::res://.godot/exported/133200997/export-e91cf839ccf1247901e22bceffa45191-dale_sideview.scn
+res://assets/scenery/sideview_tileset/desert_tileset.tres::25cff0b15277afc0a9480cab321a1af6::1701381741::res://.godot/exported/133200997/export-0fc8bd6833d482d4301393ba04c44b33-desert_tileset.res
+res://assets/ui_assets/ui_theme.tres::292ae57a6d4a0215acfa23a3e214ecee::1701381741::res://.godot/exported/133200997/export-e37b2538a831adde971d2375f3bd7691-ui_theme.res
+res://scenes/dale_scenes/dale_overhead.tscn::9a2bc275eaab22aff94e85e4a38c65e9::1701393172::res://.godot/exported/133200997/export-62d7a557d8410bcf4f82f022fedc74ba-dale_overhead.scn
+res://scenes/enemy_scenes/mawling.tscn::f6b0a506a4b097faefd51489c74dbe66::1701310675::res://.godot/exported/133200997/export-b896c6eefaea3900fd8c6ea78ec10987-mawling.scn
+res://scenes/site_scenes/enemy_encounter_1.tscn::7348a4615d22f4cffa548b03adf68131::1701393172::res://.godot/exported/133200997/export-6b73f8ee55702ba71b79bd675ee63dd8-enemy_encounter_1.scn
+res://scenes/site_scenes/overworld.tscn::ea805fc4e79128f860974a798a318684::1701393172::res://.godot/exported/133200997/export-bb731772b2e5ae2c2221e8d28ff42cb7-overworld.scn
+res://scenes/site_scenes/village.tscn::3b4a10f844896e459b3e78d0779d2853::1701393172::res://.godot/exported/133200997/export-3fd7e125adb90ea188683c10bea78090-village.scn
+res://scenes/ui_scenes/music_player.tscn::7726fbc950906535fa74adb7edfefcd0::1701393172::res://.godot/exported/133200997/export-59e82c763a0a787d803764d40a0f4a37-music_player.scn
+res://scenes/ui_scenes/player_ui.tscn::b1590daffee6af1ea4276fbfa127a997::1701393252::res://.godot/exported/133200997/export-78845b152800d2672623e023d6ee6cb0-player_ui.scn
+res://scenes/ui_scenes/title_menu.tscn::ed3864ee0823e888b73b4e35afacfe04::1701393172::res://.godot/exported/133200997/export-b8d27c9855944e84c7b8ce136eee0b42-title_menu.scn
+res://scenes/site_scenes/tutorial_area.tscn::d2ff62120a9b02e14a7157956e2a0527::1701393172::res://.godot/exported/133200997/export-2534b695f8241e422cf1e09037eccabe-tutorial_area.scn

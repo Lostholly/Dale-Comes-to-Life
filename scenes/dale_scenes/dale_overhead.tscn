@@ -64,7 +64,7 @@ _data = {
 radius = 11.0
 height = 50.0
 
-[node name="dale_overhead" type="CharacterBody2D"]
+[node name="dale_overhead" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_hue7g")
 
 [node name="Camera2D" type="Camera2D" parent="."]

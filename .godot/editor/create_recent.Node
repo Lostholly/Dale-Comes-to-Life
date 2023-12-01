@@ -1,7 +1,9 @@
-AnimationPlayer
+TileMap
+Area2D
 Sprite2D
 CollisionShape2D
-Area2D
+Label
+AnimationPlayer
 TextureProgressBar
 ProgressBar
 Control
@@ -11,13 +13,11 @@ Node
 Button
 Container
 HSlider
-Label
 HBoxContainer
 MarginContainer
 VBoxContainer
 AudioStreamPlayer
 AudioStreamPlayer2D
-TileMap
 Camera2D
 CenterContainer
 Timer

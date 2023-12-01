@@ -9,7 +9,12 @@ res://scenes/dale_scenes/dale_sideview.tscn
 res://scenes/ui_scenes/player_ui.tscn
 res://scenes/dale_scenes/dale_overhead.tscn
 res://scripts/ui_scripts/player_ui.gd
+res://scripts/environment_scripts/enemy_encounter_1.gd
+res://scripts/environment_scripts/overworld.gd
+res://scripts/ui_scripts/title_menu.gd
 res://scripts/environment_scripts/village.gd
 res://scripts/dale_scripts/dale_autoload.gd
-res://scripts/environment_scripts/overworld.gd
-res://scripts/dale_scripts/dale_overhead.gd
+res://scripts/dale_scripts/dale_sideview.gd
+res://scenes/site_scenes/tutorial_area.tscn
+res://scripts/environment_scripts/tutorial_area.gd
+res://scripts/ui_scripts/music_player.gd

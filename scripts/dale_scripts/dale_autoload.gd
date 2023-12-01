@@ -24,6 +24,9 @@ var dialogue = ""
 # We need to track our start position in the overworld.
 var overworldStart = Vector2()
 
+# We also need to track our position in certain sideview zones.
+var sideviewStart = Vector2()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

@@ -35,7 +35,8 @@ func _process(_delta):
 	pass
 
 func _on_start_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/site_scenes/village.tscn")
+	get_tree().change_scene_to_file("res://scenes/site_scenes/tutorial_area.tscn")
+	globalVariables.sideviewStart = Vector2(630, 559)
 
 func _on_controls_button_pressed():
 	controls.show()
@@ -61,6 +62,3 @@ func _on_volume_button_pressed():
 func _on_volume_return_pressed():
 	musicVolume.hide()
 	titleMenu.show()
-
-
-# Lastly we need our death buttons. 
