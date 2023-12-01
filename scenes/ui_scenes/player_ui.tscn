@@ -372,6 +372,7 @@ layout_mode = 2
 text = "No"
 
 [node name="DialogueBox" type="TextureRect" parent="MenuControl"]
+visible = false
 modulate = Color(0.85098, 0.827451, 0.85098, 1)
 offset_right = 1227.0
 offset_bottom = 612.0
@@ -411,8 +412,8 @@ layout_mode = 2
 text = "
 
 
-
-The Great Valley lies beyond this point.
+Thank you for visiting. It has been years since I have 
+had company. Great Spirits watch over you.
 
 
 
@@ -441,7 +442,7 @@ position = Vector2(282, 70)
 scale = Vector2(2.2, 2.2)
 texture = ExtResource("4_o2vud")
 vframes = 24
-frame = 13
+frame = 23
 
 [connection signal="pressed" from="MenuControl/MainMenu/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="MenuControl/MainMenu/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]

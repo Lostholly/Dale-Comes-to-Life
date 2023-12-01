@@ -22,6 +22,7 @@ var currentVolume = 1.0
 # We need a simple boolean operator to make it so our interactions don't trigger infinitely.
 var interacting = false
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 # This will set our volume slider to the current volume when the scene loads.
@@ -35,7 +36,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	# This function will control the animation of our health bar.
-	healthBar.frame = 23 - globalVariables.health
+	if globalVariables.healthBuffed == false:
+		healthBar.frame = 23 - globalVariables.health
+	elif globalVariables.healthBuffed == true:
+		healthBar.frame = 12 - globalVariables.health
 	
 	# This will trigger our death screen.
 	if globalVariables.health == 0:
@@ -60,13 +64,13 @@ func _process(_delta):
 	# This section is dealing with exit interactions. It simply makes the dialogue box appear.
 	if interacting == false:
 		if Input.is_action_just_pressed("interact") && leaveMenu.is_visible_in_tree() == false:
-			if globalVariables.currentInteraction == "villageExit" || globalVariables.currentInteraction == "enemy1Exit" || globalVariables.currentInteraction == "villageEntrance" || globalVariables.currentInteraction == "enemy1Entrance" || globalVariables.currentInteraction == "tutorialExit" || globalVariables.currentInteraction == "tutorialEntrance":
+			if globalVariables.currentInteraction == "villageExit" || globalVariables.currentInteraction == "enemy1Exit" || globalVariables.currentInteraction == "villageEntrance" || globalVariables.currentInteraction == "enemy1Entrance" || globalVariables.currentInteraction == "tutorialExit" || globalVariables.currentInteraction == "tutorialEntrance" || globalVariables.currentInteraction == "witchExit" || globalVariables.currentInteraction == "witchEntrance":
 				leaveMenu.show()
 				get_tree().paused = true
 				interacting = true
 	elif interacting == true:
 		if Input.is_action_just_pressed("interact") && leaveMenu.is_visible_in_tree() == true:
-			if globalVariables.currentInteraction == "villageExit" || globalVariables.currentInteraction == "enemy1Exit" || globalVariables.currentInteraction == "villageEntrance" || globalVariables.currentInteraction == "enemy1Entrance"|| globalVariables.currentInteraction == "tutorialExit" || globalVariables.currentInteraction == "tutorialEntrance":
+			if globalVariables.currentInteraction == "villageExit" || globalVariables.currentInteraction == "enemy1Exit" || globalVariables.currentInteraction == "villageEntrance" || globalVariables.currentInteraction == "enemy1Entrance"|| globalVariables.currentInteraction == "tutorialExit" || globalVariables.currentInteraction == "tutorialEntrance"|| globalVariables.currentInteraction == "witchExit" || globalVariables.currentInteraction == "witchEntrance":
 				leaveMenu.hide()
 				get_tree().paused = false
 				interacting = false
@@ -83,18 +87,27 @@ func _process(_delta):
 		leaveText.text = "Head to the village?"
 	if globalVariables.currentInteraction == "tutorialEntrance":
 		leaveText.text = "Return to the beginning?"
+	if globalVariables.currentInteraction == "witchExit":
+		leaveText.text = "Return to the Great Valley?"
+	if globalVariables.currentInteraction == "witchEntrance":
+		leaveText.text = "Visit the witch?"
 
 
 	# This will control our dialogue text.
 	if interacting == false:
 		if Input.is_action_just_pressed("interact") && dialogueBox.is_visible_in_tree() == false:
-			if globalVariables.currentInteraction == "tSign1" || globalVariables.currentInteraction == "tSign2" || globalVariables.currentInteraction == "tSign3" || globalVariables.currentInteraction == "tSign4" || globalVariables.currentInteraction == "tSign5"|| globalVariables.currentInteraction == "tSign6" || globalVariables.currentInteraction == "tSign7"|| globalVariables.currentInteraction == "tSign8" || globalVariables.currentInteraction == "vSign1" || globalVariables.currentInteraction == "vSign2":
+			if globalVariables.currentInteraction == "tSign1" || globalVariables.currentInteraction == "tSign2" || globalVariables.currentInteraction == "tSign3" || globalVariables.currentInteraction == "tSign4" || globalVariables.currentInteraction == "tSign5"|| globalVariables.currentInteraction == "tSign6" || globalVariables.currentInteraction == "tSign7"|| globalVariables.currentInteraction == "tSign8" || globalVariables.currentInteraction == "vSign1" || globalVariables.currentInteraction == "vSign2" || globalVariables.currentInteraction == "village_elder" || globalVariables.currentInteraction == "villager1" || globalVariables.currentInteraction == "villager2" || globalVariables.currentInteraction == "witch" || globalVariables.currentInteraction == "strongman":
 				dialogueBox.show()
 				get_tree().paused = true
 				interacting = true
+				if globalVariables.healthBuffed == false && globalVariables.currentInteraction == "witch" && globalVariables.hasBeet == true:
+					globalVariables.maxHealth = 12
+					globalVariables.health = 12
+					globalVariables.healthBuffed = true
+					globalVariables.treasuresFound += 1
 	elif interacting == true:
 		if Input.is_action_just_pressed("interact") && dialogueBox.is_visible_in_tree() == true:
-			if globalVariables.currentInteraction == "tSign1" || globalVariables.currentInteraction == "tSign2" || globalVariables.currentInteraction == "tSign3" || globalVariables.currentInteraction == "tSign4" || globalVariables.currentInteraction == "tSign5"|| globalVariables.currentInteraction == "tSign6" || globalVariables.currentInteraction == "tSign7"|| globalVariables.currentInteraction == "tSign8" || globalVariables.currentInteraction == "vSign1" || globalVariables.currentInteraction == "vSign2":
+			if globalVariables.currentInteraction == "tSign1" || globalVariables.currentInteraction == "tSign2" || globalVariables.currentInteraction == "tSign3" || globalVariables.currentInteraction == "tSign4" || globalVariables.currentInteraction == "tSign5"|| globalVariables.currentInteraction == "tSign6" || globalVariables.currentInteraction == "tSign7"|| globalVariables.currentInteraction == "tSign8" || globalVariables.currentInteraction == "vSign1" || globalVariables.currentInteraction == "vSign2" || globalVariables.currentInteraction == "village_elder" || globalVariables.currentInteraction == "villager1" || globalVariables.currentInteraction == "villager2" || globalVariables.currentInteraction == "witch" || globalVariables.currentInteraction == "strongman":
 				dialogueBox.hide()
 				get_tree().paused = false
 				interacting = false
@@ -203,6 +216,84 @@ The Great Valley lies beyond this point.
 
 " 
 
+	if globalVariables.currentInteraction == "village_elder":
+		if globalVariables.treasuresFound == 3:
+			dialogueText.text = ""
+		else:
+			dialogueText.text = "Hello, Great One. You are always welcome in our village.
+We must request of you a boon. We seek three sacred
+relics to help us fend off the monsters from the hills.
+We need:
+- The Sacred Scales of Strength in the Great Arena
+- The Tears of the Old Ones from the Eastern Bald 
+Mountain
+- A Brew of Fortitude from the Witch in the North"
+
+	if globalVariables.currentInteraction == "villager1":
+		dialogueText.text = "
+Hello, Great One. It is so rare for one of your kind to 
+scale themselves down to walk among us. You should
+test your strength in the Great Arena far south of the
+town. It is several days of travel for us, but you can
+probably make the trip in a few seconds.
+
+
+"
+
+	if globalVariables.currentInteraction == "villager2":
+		dialogueText.text = "
+Dale? Is that you? I can't see as well as I could in my 
+youth. Well it is good to somewhat see you, Scaly One.
+Say, did I ever tell you about when I was apprenticed
+to the Witch of the North? She lives in a secluded hut
+north of First Light. I still remember the scent of herbs
+and the light of dawn cresting through the mountains.
+
+"
+
+	if globalVariables.currentInteraction == "witch":
+		if globalVariables.hasBeet == false:
+			dialogueText.text = "
+Hello dearie, let me have a look at you. Oh my, you are 
+older than even me. A Brew of Fortitude you say? Well
+I can brew one if you bring me a Divine Beet from the 
+Garden of Beets to the east of this place. May the 
+Great Spirits watch over you, Old One.
+
+
+"
+		elif globalVariables.hasBeet == true:
+			dialogueText.text = "
+Ah yes, this is exactly what we need. Just a pinch of 
+peppermint and a hint of cactus juice. Then we add 
+some lost dreams, and a whiff of distant longing. Here 
+you go dearie, try it out. Good, isn't it? Take it back
+to the village and give them my blessing. Go in peace,
+Old One.
+
+"
+
+	if globalVariables.currentInteraction == "strongman":
+		if globalVariables.hasScales == false:
+			dialogueText.text = "
+Ohohohoho another challenger for the Arena. Good luck 
+to you sir. I have been training for 67 years and will
+someday test my own luck, but only once I am ready 
+for I have watched too many good adventurers die in
+the Arena's harsh embrace. 
+
+
+"
+		if globalVariables.hasScales == true:
+			dialogueText.text = "
+
+What? You did it? You have the scales? How is this 
+possible. Traveller, I beg of you - please tell me your 
+secret. I shall continue training forevermore. Ohohoho.
+
+
+
+"
 
 # We need this to unpause the game and get rid of the menu.
 func _on_return_button_pressed():
@@ -266,6 +357,10 @@ func _on_yes_leave_button_pressed():
 		get_tree().change_scene_to_file("res://scenes/site_scenes/village.tscn")
 	if globalVariables.currentInteraction == "tutorialEntrance":
 		get_tree().change_scene_to_file("res://scenes/site_scenes/tutorial_area.tscn")
+	if globalVariables.currentInteraction == "witchExit":
+		get_tree().change_scene_to_file("res://scenes/site_scenes/overworld.tscn")
+	if globalVariables.currentInteraction == "witchEntrance":
+		get_tree().change_scene_to_file("res://scenes/site_scenes/witch_house.tscn")
 
 # Closes leave menu.
 func _on_no_leave_button_pressed():

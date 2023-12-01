@@ -7,6 +7,8 @@ extends TileMap
 @onready var villageAnimate = $VillageArea2D/CollisionShape2D/AnimationPlayer
 @onready var enemy1Interact = $Enemy1Area2D/CollisionShape2D/Sprite2D
 @onready var enemy1Animate = $Enemy1Area2D/CollisionShape2D/AnimationPlayer
+@onready var witchHouseInteract = $WitchHouseArea2D/CollisionShape2D/Sprite2D
+@onready var witchHouseAnimate = $WitchHouseArea2D/CollisionShape2D/AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -46,4 +48,19 @@ func _on_enemy_1_area_2d_body_exited(body):
 	if body.is_in_group("Player"):
 		enemy1Interact.hide()
 		enemy1Animate.stop()
+		globalVariables.currentInteraction = ""
+
+
+func _on_witch_house_area_2d_body_entered(body):
+	if body.is_in_group("Player"):
+		witchHouseInteract.show()
+		witchHouseAnimate.play("interact")
+		globalVariables.currentInteraction = "witchEntrance"
+		globalVariables.sideviewStart = Vector2(100, 678)
+
+
+func _on_witch_house_area_2d_body_exited(body):
+	if body.is_in_group("Player"):
+		witchHouseInteract.hide()
+		witchHouseAnimate.stop()
 		globalVariables.currentInteraction = ""

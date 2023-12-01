@@ -187,6 +187,17 @@ func _physics_process(delta):
 		else:
 			var tween = get_tree().create_tween()
 			tween.tween_property(camera, "offset", Vector2(0, -80), 0.15)
+	if globalVariables.currentScene == "witchHouse":
+		camera.limit_bottom = 835
+		camera.limit_top = -2000
+		camera.limit_left = 0
+		camera.limit_right = 1859
+		if globalVariables.dalePosition.y < -120:
+			var tween = get_tree().create_tween()
+			tween.tween_property(camera, "offset", Vector2(0, 0), 0.15)
+		else:
+			var tween = get_tree().create_tween()
+			tween.tween_property(camera, "offset", Vector2(0, -80), 0.15)
 
 
 	# This function makes the physics work.

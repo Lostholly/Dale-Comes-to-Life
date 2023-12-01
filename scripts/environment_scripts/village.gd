@@ -56,7 +56,7 @@ func _on_village_sign_1_body_entered(body):
 		globalVariables.currentInteraction = "vSign1"
 
 
-func _on_village_sign_1_body_exited(body):
+func _on_village_sign_1_body_exited(_body):
 	sign1Interact.hide()
 	sign1Animate.stop()
 	globalVariables.currentInteraction = ""
@@ -69,7 +69,7 @@ func _on_village_sign_2_body_entered(body):
 		globalVariables.currentInteraction = "vSign2"
 
 
-func _on_village_sign_2_body_exited(body):
+func _on_village_sign_2_body_exited(_body):
 	sign2Interact.hide()
 	sign2Animate.stop()
 	globalVariables.currentInteraction = ""

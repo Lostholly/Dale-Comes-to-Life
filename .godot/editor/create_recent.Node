@@ -1,8 +1,8 @@
-AnimationPlayer
-AudioStreamPlayer
 CollisionShape2D
-Area2D
+AnimationPlayer
 Sprite2D
+Area2D
+AudioStreamPlayer
 TileMap
 AnimationTree
 CharacterBody2D

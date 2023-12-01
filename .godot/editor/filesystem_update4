@@ -38,3 +38,8 @@ res://scripts/villager_scripts/strongman.gd
 res://scripts/villager_scripts/villager2.gd
 res://scripts/villager_scripts/village_elder.gd
 res://scripts/villager_scripts/witch.gd
+res://scripts/environment_scripts/witch_house.gd
+res://scripts/ui_scripts/Beet.gd
+res://scenes/ui_scenes/Beet.tscn
+res://scenes/ui_scenes/beet.tscn
+res://scripts/ui_scripts/beet.gd

@@ -169,6 +169,7 @@ libraries = {
 
 [node name="Enemy1Area2D" type="Area2D" parent="."]
 position = Vector2(1061, 359)
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy1Area2D"]
 position = Vector2(-195, -330)
@@ -186,7 +187,29 @@ libraries = {
 "": SubResource("AnimationLibrary_rfr8r")
 }
 
+[node name="WitchHouseArea2D" type="Area2D" parent="."]
+position = Vector2(483, 362)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WitchHouseArea2D"]
+position = Vector2(-195, -330)
+shape = SubResource("CircleShape2D_jummv")
+
+[node name="Sprite2D" type="Sprite2D" parent="WitchHouseArea2D/CollisionShape2D"]
+visible = false
+position = Vector2(46, -58)
+texture = ExtResource("4_ywmym")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WitchHouseArea2D/CollisionShape2D"]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_rfr8r")
+}
+
 [connection signal="body_entered" from="VillageArea2D" to="." method="_on_village_area_2d_body_entered"]
 [connection signal="body_exited" from="VillageArea2D" to="." method="_on_village_area_2d_body_exited"]
 [connection signal="body_entered" from="Enemy1Area2D" to="." method="_on_enemy_1_area_2d_body_entered"]
 [connection signal="body_exited" from="Enemy1Area2D" to="." method="_on_enemy_1_area_2d_body_exited"]
+[connection signal="body_entered" from="WitchHouseArea2D" to="." method="_on_witch_house_area_2d_body_entered"]
+[connection signal="body_exited" from="WitchHouseArea2D" to="." method="_on_witch_house_area_2d_body_exited"]

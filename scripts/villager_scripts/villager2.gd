@@ -4,7 +4,7 @@ extends Area2D
 @onready var interact = $InteractSprite
 @onready var interactAnimation = $InteractSprite/AnimationPlayer
 
-@onready var globalVariables = $DaleAutoload
+@onready var globalVariables = get_node("/root/DaleAutoload")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -13,7 +13,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 
