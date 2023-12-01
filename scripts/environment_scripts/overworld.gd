@@ -9,6 +9,11 @@ extends TileMap
 @onready var enemy1Animate = $Enemy1Area2D/CollisionShape2D/AnimationPlayer
 @onready var witchHouseInteract = $WitchHouseArea2D/CollisionShape2D/Sprite2D
 @onready var witchHouseAnimate = $WitchHouseArea2D/CollisionShape2D/AnimationPlayer
+@onready var arenaInteract = $ArenaArea2D/CollisionShape2D/Sprite2D
+@onready var arenaAnimate = $ArenaArea2D/CollisionShape2D/AnimationPlayer
+@onready var mountainInteract = $MountainArea2D/CollisionShape2D/Sprite2D
+@onready var mountainAnimate = $MountainArea2D/CollisionShape2D/AnimationPlayer
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -63,4 +68,34 @@ func _on_witch_house_area_2d_body_exited(body):
 	if body.is_in_group("Player"):
 		witchHouseInteract.hide()
 		witchHouseAnimate.stop()
+		globalVariables.currentInteraction = ""
+
+
+func _on_arena_area_2d_body_entered(body):
+	if body.is_in_group("Player"):
+		arenaInteract.show()
+		arenaAnimate.play("interact")
+		globalVariables.currentInteraction = "arenaEntrance"
+		globalVariables.sideviewStart = Vector2(246, 290)
+
+
+func _on_arena_area_2d_body_exited(body):
+	if body.is_in_group("Player"):
+		arenaInteract.hide()
+		arenaAnimate.stop()
+		globalVariables.currentInteraction = ""
+
+
+func _on_mountain_area_2d_body_entered(body):
+	if body.is_in_group("Player"):
+		mountainInteract.show()
+		mountainAnimate.play("interact")
+		globalVariables.currentInteraction = "mountainEntrance"
+		globalVariables.sideviewStart = Vector2(151, 527)
+
+
+func _on_mountain_area_2d_body_exited(body):
+	if body.is_in_group("Player"):
+		mountainInteract.hide()
+		mountainAnimate.stop()
 		globalVariables.currentInteraction = ""

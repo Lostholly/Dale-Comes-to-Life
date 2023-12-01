@@ -64,13 +64,13 @@ func _process(_delta):
 	# This section is dealing with exit interactions. It simply makes the dialogue box appear.
 	if interacting == false:
 		if Input.is_action_just_pressed("interact") && leaveMenu.is_visible_in_tree() == false:
-			if globalVariables.currentInteraction == "villageExit" || globalVariables.currentInteraction == "enemy1Exit" || globalVariables.currentInteraction == "villageEntrance" || globalVariables.currentInteraction == "enemy1Entrance" || globalVariables.currentInteraction == "tutorialExit" || globalVariables.currentInteraction == "tutorialEntrance" || globalVariables.currentInteraction == "witchExit" || globalVariables.currentInteraction == "witchEntrance":
+			if globalVariables.currentInteraction == "villageExit" || globalVariables.currentInteraction == "enemy1Exit" || globalVariables.currentInteraction == "villageEntrance" || globalVariables.currentInteraction == "enemy1Entrance" || globalVariables.currentInteraction == "tutorialExit" || globalVariables.currentInteraction == "tutorialEntrance" || globalVariables.currentInteraction == "witchExit" || globalVariables.currentInteraction == "witchEntrance" || globalVariables.currentInteraction == "arenaExit" || globalVariables.currentInteraction == "arenaEntrance" || globalVariables.currentInteraction == "mountainExit" || globalVariables.currentInteraction == "mountainEntrance":
 				leaveMenu.show()
 				get_tree().paused = true
 				interacting = true
 	elif interacting == true:
 		if Input.is_action_just_pressed("interact") && leaveMenu.is_visible_in_tree() == true:
-			if globalVariables.currentInteraction == "villageExit" || globalVariables.currentInteraction == "enemy1Exit" || globalVariables.currentInteraction == "villageEntrance" || globalVariables.currentInteraction == "enemy1Entrance"|| globalVariables.currentInteraction == "tutorialExit" || globalVariables.currentInteraction == "tutorialEntrance"|| globalVariables.currentInteraction == "witchExit" || globalVariables.currentInteraction == "witchEntrance":
+			if globalVariables.currentInteraction == "villageExit" || globalVariables.currentInteraction == "enemy1Exit" || globalVariables.currentInteraction == "villageEntrance" || globalVariables.currentInteraction == "enemy1Entrance"|| globalVariables.currentInteraction == "tutorialExit" || globalVariables.currentInteraction == "tutorialEntrance"|| globalVariables.currentInteraction == "witchExit" || globalVariables.currentInteraction == "witchEntrance" || globalVariables.currentInteraction == "arenaExit" || globalVariables.currentInteraction == "arenaEntrance" || globalVariables.currentInteraction == "mountainExit" || globalVariables.currentInteraction == "mountainEntrance":
 				leaveMenu.hide()
 				get_tree().paused = false
 				interacting = false
@@ -82,7 +82,7 @@ func _process(_delta):
 	if globalVariables.currentInteraction == "villageEntrance":
 		leaveText.text = "Enter the village?"
 	if globalVariables.currentInteraction == "enemy1Entrance":
-		leaveText.text = "Search for the beet?"
+		leaveText.text = "Search for the Beet?"
 	if globalVariables.currentInteraction == "tutorialExit":
 		leaveText.text = "Head to the village?"
 	if globalVariables.currentInteraction == "tutorialEntrance":
@@ -90,7 +90,15 @@ func _process(_delta):
 	if globalVariables.currentInteraction == "witchExit":
 		leaveText.text = "Return to the Great Valley?"
 	if globalVariables.currentInteraction == "witchEntrance":
-		leaveText.text = "Visit the witch?"
+		leaveText.text = "Visit the Witch?"
+	if globalVariables.currentInteraction == "arenaExit":
+		leaveText.text = "Leave the Arena?"
+	if globalVariables.currentInteraction == "arenaEntrance":
+		leaveText.text = "Enter the Arena?"
+	if globalVariables.currentInteraction == "mountainExit":
+		leaveText.text = "Leave the Mountain?"
+	if globalVariables.currentInteraction == "mountainEntrance":
+		leaveText.text = "Scale the Mountain?"
 
 
 	# This will control our dialogue text.
@@ -288,7 +296,7 @@ the Arena's harsh embrace.
 			dialogueText.text = "
 
 What? You did it? You have the scales? How is this 
-possible. Traveller, I beg of you - please tell me your 
+possible? Traveller, I beg of you - please tell me your 
 secret. I shall continue training forevermore. Ohohoho.
 
 
@@ -361,6 +369,14 @@ func _on_yes_leave_button_pressed():
 		get_tree().change_scene_to_file("res://scenes/site_scenes/overworld.tscn")
 	if globalVariables.currentInteraction == "witchEntrance":
 		get_tree().change_scene_to_file("res://scenes/site_scenes/witch_house.tscn")
+	if globalVariables.currentInteraction == "arenaExit":
+		get_tree().change_scene_to_file("res://scenes/site_scenes/overworld.tscn")
+	if globalVariables.currentInteraction == "arenaEntrance":
+		get_tree().change_scene_to_file("res://scenes/site_scenes/arena.tscn")
+	if globalVariables.currentInteraction == "mountainExit":
+		get_tree().change_scene_to_file("res://scenes/site_scenes/overworld.tscn")
+	if globalVariables.currentInteraction == "mountainEntrance":
+		get_tree().change_scene_to_file("res://scenes/site_scenes/mountain.tscn")
 
 # Closes leave menu.
 func _on_no_leave_button_pressed():

@@ -1,7 +1,7 @@
-res://scripts/ui_scripts
-res://assets/sprites/object_sprites
 res://scripts/environment_scripts
 res://assets/scenery/sideview_tileset
+res://scripts/ui_scripts
+res://assets/sprites/object_sprites
 res://scripts/villager_scripts
 res://assets/music
 res://assets/sprites/villager_sprites

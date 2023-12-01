@@ -165,6 +165,7 @@ func _physics_process(delta):
 		else:
 			var tween = get_tree().create_tween()
 			tween.tween_property(camera, "offset", Vector2(0, -80), 0.15)
+
 	if globalVariables.currentScene == "enemyEncounter1":
 		camera.limit_bottom = 768
 		camera.limit_top = -2000
@@ -176,6 +177,7 @@ func _physics_process(delta):
 		else:
 			var tween = get_tree().create_tween()
 			tween.tween_property(camera, "offset", Vector2(0, -80), 0.15)
+
 	if globalVariables.currentScene == "tutorial":
 		camera.limit_bottom = 751
 		camera.limit_top = -2000
@@ -187,11 +189,36 @@ func _physics_process(delta):
 		else:
 			var tween = get_tree().create_tween()
 			tween.tween_property(camera, "offset", Vector2(0, -80), 0.15)
+
 	if globalVariables.currentScene == "witchHouse":
 		camera.limit_bottom = 835
 		camera.limit_top = -2000
 		camera.limit_left = 0
 		camera.limit_right = 1859
+		if globalVariables.dalePosition.y < -120:
+			var tween = get_tree().create_tween()
+			tween.tween_property(camera, "offset", Vector2(0, 0), 0.15)
+		else:
+			var tween = get_tree().create_tween()
+			tween.tween_property(camera, "offset", Vector2(0, -80), 0.15)
+
+	if globalVariables.currentScene == "arena":
+		camera.limit_bottom = 795
+		camera.limit_top = -2000
+		camera.limit_left = -10
+		camera.limit_right = 4998
+		if globalVariables.dalePosition.y < -120:
+			var tween = get_tree().create_tween()
+			tween.tween_property(camera, "offset", Vector2(0, 0), 0.15)
+		else:
+			var tween = get_tree().create_tween()
+			tween.tween_property(camera, "offset", Vector2(0, -80), 0.15)
+
+	if globalVariables.currentScene == "mountain":
+		camera.limit_bottom = 795
+		camera.limit_top = -2525
+		camera.limit_left = 4
+		camera.limit_right = 2623
 		if globalVariables.dalePosition.y < -120:
 			var tween = get_tree().create_tween()
 			tween.tween_property(camera, "offset", Vector2(0, 0), 0.15)

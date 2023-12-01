@@ -100,6 +100,7 @@ libraries = {
 shape = SubResource("CapsuleShape2D_u4tsv")
 
 [node name="InteractSprite" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-43, -42)
 texture = ExtResource("2_faqum")
 hframes = 2

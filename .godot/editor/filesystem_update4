@@ -43,3 +43,8 @@ res://scripts/ui_scripts/Beet.gd
 res://scenes/ui_scenes/Beet.tscn
 res://scenes/ui_scenes/beet.tscn
 res://scripts/ui_scripts/beet.gd
+res://scripts/environment_scripts/arena.gd
+res://scripts/environment_scripts/arena.tscn
+res://scenes/ui_scenes/scales.tscn
+res://scripts/ui_scripts/scales.gd
+res://scripts/environment_scripts/mountain.gd

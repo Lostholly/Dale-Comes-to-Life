@@ -46,6 +46,12 @@ func _process(_delta):
 	elif globalVariables.currentScene != "witchHouse":
 		witchMusic.stop()
 
+	if globalVariables.currentScene == "arena" || globalVariables.currentScene == "mountain":
+		if bossMusic.playing == false:
+			bossMusic.play()
+	elif globalVariables.currentScene != "arena" && globalVariables.currentScene != "mountain":
+		bossMusic.stop()
+
 	# We have to control our volume for the volume slider.
 	fightMusic.volume_db = volume
 	bossMusic.volume_db = volume
