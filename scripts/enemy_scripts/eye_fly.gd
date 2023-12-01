@@ -1,12 +1,11 @@
 extends CharacterBody2D
 
 # Physics variables.
-@export var speed = 300.0
-@export var jumpVelocity = -600
+@export var speed = 200.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # We need our gameplay variables.
-@export var health = 3
+@export var health = 5
 
 # We need access to our global Dale variables for positioning
 @onready var playerVars = get_node("/root/DaleAutoload") 
@@ -14,6 +13,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 # Animation variables.
 var state = "idle"
 var direction = 1
+var directionY = 1
 
 # Behaviour variables.
 var aware = false
@@ -33,21 +33,17 @@ var relativePositionY = ""
 # We need to grab our sprite to flip it.
 @onready var sprite = $Sprite2D
 
-func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
+func _physics_process(_delta):
 
 	# This section makes the enemy move. This will move faster if they detect the player.
 	if state != "attacked":
 		if aware == false:
 			velocity.x = speed * direction
+			velocity.y = speed * directionY
 		if aware == true:
 			velocity.x = speed * 1.5 * direction
+			velocity.y = speed * 1.5 * directionY
 	
-	# We want the enemy to jump if they're stuck on a wall.
-	if is_on_wall() && state != "jumping":
-		velocity.y = jumpVelocity
 
 	move_and_slide()
 	
@@ -67,15 +63,15 @@ func _physics_process(delta):
 	# We are also going to track the relative position to see if the enemy is higher than the player.
 	if enemyPosition.y > playerVars.dalePosition.y:
 		relativePositionY = "below"
+		directionY = -1
 	elif enemyPosition.y < playerVars.dalePosition.y:
 		relativePositionY = "above"
+		directionY = 1
 
 
 	# To track the enemy's state.
-	if not is_on_floor() && state != "attacked":
-		state = "jumping"
-	elif state != "attacked":
-		state = "walking"
+	if state != "attacked":
+		state = "idle"
 
 	# Going to track if the player is attacking to see if we can make it so the enemy only picks up the damage at that time.
 	if playerVars.attacking == true:
@@ -90,10 +86,7 @@ func _physics_process(delta):
 	elif state == "attacked":
 		animations.play("damaged")
 	else:
-		if aware == true:
-			animations.play("angry_walk")
-		if aware == false:
-			animations.play("walk")
+		animations.play("fly")
 
 	# This will tell the enemy what direction to face.
 	if direction == 1:
@@ -164,3 +157,4 @@ func _on_animation_player_animation_finished(anim_name):
 # This flips the enemy movement periodically. 
 func _on_movement_timer_timeout():
 	direction = direction * -1
+	directionY = directionY * -1

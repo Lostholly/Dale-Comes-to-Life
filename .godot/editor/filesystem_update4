@@ -18,3 +18,10 @@ res://scripts/dale_scripts/dale_sideview.gd
 res://scenes/site_scenes/tutorial_area.tscn
 res://scripts/environment_scripts/tutorial_area.gd
 res://scripts/ui_scripts/music_player.gd
+res://scenes/ui_scenes/Health_Drop.tscn
+res://scenes/ui_scenes/health_drop.tscn
+res://scripts/ui_scripts/health_drop.gd
+res://scenes/enemy_scenes/mawling.tscn
+res://scripts/enemy_scripts/mawling.gd
+res://scenes/enemy_scenes/eye_fly.tscn
+res://scripts/enemy_scripts/eye_fly.gd

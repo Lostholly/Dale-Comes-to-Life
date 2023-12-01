@@ -1,0 +1,147 @@
+[gd_scene load_steps=12 format=3 uid="uid://bh04typdqohcp"]
+
+[ext_resource type="Script" path="res://scripts/enemy_scripts/eye_fly.gd" id="1_ndh21"]
+[ext_resource type="Texture2D" uid="uid://d3u60ytum1k3w" path="res://assets/sprites/enemy_sprites/eye_fly.png" id="1_yjmi6"]
+
+[sub_resource type="Animation" id="Animation_vi6x6"]
+resource_name = "fly"
+length = 0.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_6c2u3"]
+resource_name = "damaged"
+length = 0.4
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_u67ly"]
+resource_name = "death"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_p0jdv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y5dwu"]
+_data = {
+"RESET": SubResource("Animation_p0jdv"),
+"damaged": SubResource("Animation_6c2u3"),
+"death": SubResource("Animation_u67ly"),
+"fly": SubResource("Animation_vi6x6")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gj07y"]
+radius = 23.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqk8h"]
+size = Vector2(729, 601)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7jo6m"]
+radius = 29.0
+height = 58.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wiwe3"]
+radius = 34.0
+height = 68.0
+
+[node name="eye_fly" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_ndh21")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yjmi6")
+hframes = 4
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y5dwu")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 6)
+shape = SubResource("CircleShape2D_gj07y")
+
+[node name="DetectionArea2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea2D"]
+position = Vector2(3.5, -38.5)
+shape = SubResource("RectangleShape2D_xqk8h")
+debug_color = Color(0.52549, 0.572549, 0.12549, 0.419608)
+
+[node name="DamageArea2D" type="Area2D" parent="."]
+visible = false
+
+[node name="DamageShape2D" type="CollisionShape2D" parent="DamageArea2D"]
+position = Vector2(-1, 7)
+shape = SubResource("CapsuleShape2D_7jo6m")
+debug_color = Color(0.192157, 0.615686, 0.501961, 0.419608)
+
+[node name="AttackArea2D" type="Area2D" parent="."]
+
+[node name="AttackShape2D" type="CollisionShape2D" parent="AttackArea2D"]
+position = Vector2(-1, 6)
+shape = SubResource("CapsuleShape2D_wiwe3")
+debug_color = Color(0.803922, 0.356863, 0.560784, 0.419608)
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
+wait_time = 0.439
+one_shot = true
+
+[node name="MovementTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="DetectionArea2D" to="." method="_on_detection_area_2d_body_entered"]
+[connection signal="body_exited" from="DetectionArea2D" to="." method="_on_detection_area_2d_body_exited"]
+[connection signal="area_entered" from="DamageArea2D" to="." method="_on_damage_area_2d_area_entered"]
+[connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]

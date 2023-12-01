@@ -26,7 +26,7 @@ func _ready():
 		facing = "left"
 
 func _physics_process(delta):
-	print(position)
+	#print(position)
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta

@@ -141,8 +141,8 @@ down.
 	if globalVariables.currentInteraction == "tSign5":
 		dialogueText.text = "Dale, 
 
-Some enemies may drop hearts after being defeated. 
-Grab these to replenish your health. Tasty!
+You may sometimes find floating hearts in your travels.
+These can replenish your health if you eat them. Tasty!
 
 - Dale
 

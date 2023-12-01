@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cn0fi3gwlbtfa"]
+[gd_scene load_steps=14 format=3 uid="uid://cn0fi3gwlbtfa"]
 
 [ext_resource type="TileSet" uid="uid://c3kwhxl3y6gjq" path="res://assets/scenery/sideview_tileset/desert_tileset.tres" id="1_aveni"]
 [ext_resource type="Texture2D" uid="uid://cdjb8lqllqn1q" path="res://assets/scenery/backgrounds/far_mountains.png" id="2_g0ysg"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://blveoq1jtp0cn" path="res://scenes/dale_scenes/dale_sideview.tscn" id="5_3ib8w"]
 [ext_resource type="PackedScene" uid="uid://d107b2rqo2u24" path="res://scenes/enemy_scenes/mawling.tscn" id="6_x0a8g"]
 [ext_resource type="Texture2D" uid="uid://c4c0h43moijfe" path="res://assets/ui_assets/interact_graphic.png" id="8_25ve1"]
+[ext_resource type="PackedScene" uid="uid://yfdwcec282kq" path="res://scenes/ui_scenes/health_drop.tscn" id="9_bgrv3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fk662"]
 radius = 42.0
@@ -32,7 +33,6 @@ tracks/0/keys = {
 resource_name = "interact"
 length = 0.8
 loop_mode = 1
-step = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -124,6 +124,12 @@ root_node = NodePath("../Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_rfr8r")
 }
+
+[node name="health_drop" parent="." instance=ExtResource("9_bgrv3")]
+position = Vector2(1639, -408)
+
+[node name="health_drop2" parent="." instance=ExtResource("9_bgrv3")]
+position = Vector2(3592, -25)
 
 [connection signal="body_entered" from="ExitArea2D" to="." method="_on_exit_area_2d_body_entered"]
 [connection signal="body_exited" from="ExitArea2D" to="." method="_on_exit_area_2d_body_exited"]
