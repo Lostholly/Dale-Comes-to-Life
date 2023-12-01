@@ -225,13 +225,10 @@ The Great Valley lies beyond this point.
 " 
 
 	if globalVariables.currentInteraction == "village_elder":
-		if globalVariables.treasuresFound == 3:
-			dialogueText.text = ""
-		else:
-			dialogueText.text = "Hello, Great One. You are always welcome in our village.
+		dialogueText.text = "Hello, Great One. You are always welcome in our village.
 We must request of you a boon. We seek three sacred
 relics to help us fend off the monsters from the hills.
-We need:
+Return to me once you have:
 - The Sacred Scales of Strength in the Great Arena
 - The Tears of the Old Ones from the Eastern Bald 
 Mountain

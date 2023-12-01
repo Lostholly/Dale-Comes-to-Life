@@ -1,0 +1,104 @@
+[gd_scene load_steps=13 format=3 uid="uid://cx2s3ukylpsdc"]
+
+[ext_resource type="Texture2D" uid="uid://bdasvcsbvmpt6" path="res://assets/scenery/backgrounds/sky.png" id="1_xktjw"]
+[ext_resource type="Texture2D" uid="uid://dikwcct0qbp5x" path="res://assets/scenery/backgrounds/clouds.png" id="2_k8wk2"]
+[ext_resource type="Texture2D" uid="uid://cdjb8lqllqn1q" path="res://assets/scenery/backgrounds/far_mountains.png" id="3_s60eb"]
+[ext_resource type="Theme" uid="uid://l465i67mvrkl" path="res://assets/ui_assets/ui_theme.tres" id="4_l8du5"]
+[ext_resource type="FontFile" uid="uid://5gakdth474y7" path="res://assets/fonts/cruft.ttf" id="5_g3via"]
+[ext_resource type="FontFile" uid="uid://bc3igacj3cd7s" path="res://assets/fonts/Habbo.ttf" id="6_0jnv6"]
+[ext_resource type="Texture2D" uid="uid://cc2dgrroyjes3" path="res://assets/ui_assets/win_screen.png" id="7_r0xnn"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_lfxni"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_h8htk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jdx0p"]
+font = ExtResource("5_g3via")
+font_size = 84
+font_color = Color(0.435294, 0.592157, 0.368627, 1)
+outline_color = Color(0.164706, 0.12549, 0.164706, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_of8cw"]
+font = ExtResource("6_0jnv6")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_70hh4"]
+font_size = 8
+
+[node name="win_screen" type="Node2D"]
+
+[node name="Sky" type="Sprite2D" parent="."]
+position = Vector2(-610, 458)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_xktjw")
+metadata/_edit_group_ = true
+
+[node name="Clouds" type="Sprite2D" parent="Sky"]
+texture = ExtResource("2_k8wk2")
+
+[node name="Mountains" type="Sprite2D" parent="Sky"]
+texture = ExtResource("3_s60eb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(558, 502)
+scale = Vector2(-5791.01, 997.515)
+zoom = Vector2(0.45, 0.45)
+
+[node name="EndScreen" type="TextureRect" parent="."]
+modulate = Color(0.85098, 0.827451, 0.85098, 1)
+offset_left = -17.0
+offset_top = -108.0
+offset_right = 1196.0
+offset_bottom = 1157.0
+texture = SubResource("CanvasTexture_lfxni")
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="EndScreen"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 1213.0
+offset_bottom = 1264.0
+theme = ExtResource("4_l8du5")
+
+[node name="TextureRect" type="TextureRect" parent="EndScreen/MarginContainer"]
+modulate = Color(0.164706, 0.12549, 0.164706, 1)
+layout_mode = 2
+texture = SubResource("CanvasTexture_h8htk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndScreen/MarginContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="EndScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndScreen/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="EndScreen/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Valley Saved"
+label_settings = SubResource("LabelSettings_jdx0p")
+
+[node name="Label" type="Label" parent="EndScreen/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "And so the hero rides off into the sunset.
+"
+label_settings = SubResource("LabelSettings_of8cw")
+
+[node name="TextureRect" type="TextureRect" parent="EndScreen/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_r0xnn")
+expand_mode = 4
+
+[node name="space" type="Label" parent="EndScreen/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_70hh4")
+
+[node name="TitleMenuButton" type="Button" parent="EndScreen/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Title Menu
+"

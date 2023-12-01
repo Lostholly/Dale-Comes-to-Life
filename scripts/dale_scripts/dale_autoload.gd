@@ -4,6 +4,7 @@ extends Node
 var treasuresFound = 0
 var hasBeet = false
 var hasScales = false
+var hasTears = false
 var healthBuffed = false
 
 # Gameplay variables.

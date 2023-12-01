@@ -226,6 +226,10 @@ func _physics_process(delta):
 			var tween = get_tree().create_tween()
 			tween.tween_property(camera, "offset", Vector2(0, -80), 0.15)
 
+	# This is our win con.
+	if globalVariables.treasuresFound == 3 && globalVariables.currentScene == "village":
+		get_tree().change_scene_to_file("res://scenes/ui_scenes/win_screen.tscn")
+
 
 	# This function makes the physics work.
 	move_and_slide()

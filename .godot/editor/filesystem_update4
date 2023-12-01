@@ -48,3 +48,7 @@ res://scripts/environment_scripts/arena.tscn
 res://scenes/ui_scenes/scales.tscn
 res://scripts/ui_scripts/scales.gd
 res://scripts/environment_scripts/mountain.gd
+res://scenes/ui_scenes/tears.tscn
+res://scripts/ui_scripts/tears.gd
+res://scenes/ui_scenes/win_screen.tscn
+res://scenes/dale_scenes/dale_autoload.tscn

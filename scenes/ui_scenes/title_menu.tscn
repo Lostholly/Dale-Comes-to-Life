@@ -74,8 +74,8 @@ _data = {
 script = ExtResource("1_u87k7")
 
 [node name="Sky" type="Sprite2D" parent="."]
-position = Vector2(-1043, 346)
-scale = Vector2(2.7, 2.7)
+position = Vector2(957, 512)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_jvpb1")
 metadata/_edit_group_ = true
 

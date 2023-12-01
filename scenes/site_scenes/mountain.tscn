@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bl2mjwkoymwga"]
+[gd_scene load_steps=15 format=3 uid="uid://bl2mjwkoymwga"]
 
 [ext_resource type="TileSet" uid="uid://c3kwhxl3y6gjq" path="res://assets/scenery/sideview_tileset/desert_tileset.tres" id="1_e4k3e"]
 [ext_resource type="Texture2D" uid="uid://cdjb8lqllqn1q" path="res://assets/scenery/backgrounds/far_mountains.png" id="1_k4a64"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c4c0h43moijfe" path="res://assets/ui_assets/interact_graphic.png" id="4_woi4l"]
 [ext_resource type="PackedScene" uid="uid://yfdwcec282kq" path="res://scenes/ui_scenes/health_drop.tscn" id="6_iai54"]
 [ext_resource type="PackedScene" uid="uid://bh04typdqohcp" path="res://scenes/enemy_scenes/eye_fly.tscn" id="7_bm3ru"]
+[ext_resource type="PackedScene" uid="uid://bsrevglpw4ox7" path="res://scenes/ui_scenes/tears.tscn" id="7_qco2o"]
 [ext_resource type="PackedScene" uid="uid://blveoq1jtp0cn" path="res://scenes/dale_scenes/dale_sideview.tscn" id="8_oe617"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4jvfl"]
@@ -95,7 +96,7 @@ position = Vector2(248, 377)
 texture = ExtResource("3_w4k1x")
 
 [node name="ExitArea2D" type="Area2D" parent="."]
-position = Vector2(-2, 548)
+position = Vector2(-9, 545)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea2D"]
@@ -103,7 +104,7 @@ shape = SubResource("CapsuleShape2D_4jvfl")
 
 [node name="Sprite2D" type="Sprite2D" parent="ExitArea2D"]
 visible = false
-position = Vector2(-43, -42)
+position = Vector2(51, -51)
 texture = ExtResource("4_woi4l")
 hframes = 2
 
@@ -112,6 +113,9 @@ root_node = NodePath("../Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_rfr8r")
 }
+
+[node name="tears" parent="ExitArea2D" instance=ExtResource("7_qco2o")]
+position = Vector2(1126.8, -2714.1)
 
 [node name="health_drop" parent="." instance=ExtResource("6_iai54")]
 position = Vector2(1425, -1115)
@@ -130,3 +134,6 @@ position = Vector2(1990.39, -1689.5)
 
 [node name="dale_sideview" parent="." instance=ExtResource("8_oe617")]
 position = Vector2(242, 511)
+
+[connection signal="body_entered" from="ExitArea2D" to="." method="_on_exit_area_2d_body_entered"]
+[connection signal="body_exited" from="ExitArea2D" to="." method="_on_exit_area_2d_body_exited"]

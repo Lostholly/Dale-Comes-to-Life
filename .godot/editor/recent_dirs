@@ -1,7 +1,8 @@
-res://scripts/environment_scripts
-res://assets/scenery/sideview_tileset
+res://assets/ui_assets
 res://scripts/ui_scripts
 res://assets/sprites/object_sprites
+res://scripts/environment_scripts
+res://assets/scenery/sideview_tileset
 res://scripts/villager_scripts
 res://assets/music
 res://assets/sprites/villager_sprites
@@ -10,7 +11,6 @@ res://assets/sprites/enemy_sprites
 C:/Users/jerem/OneDrive/Documents/Jeremy's Projects/Game Design Projects/Dale Comes to Life/Builds/dale-comes-to-life-html-0.4
 C:/Users/jerem/OneDrive/Documents/Jeremy's Projects/Game Design Projects/Dale Comes to Life/Builds
 res://assets/fonts
-res://assets/ui_assets
 res://scenes/ui_scenes
 res://assets/sprites/dale_sprites
 res://assets/scenery/backgrounds

@@ -1,3 +1,6 @@
+Label
+TextureRect
+Node2D
 AnimationPlayer
 Area2D
 TileMap
@@ -7,11 +10,9 @@ AudioStreamPlayer
 AnimationTree
 CharacterBody2D
 Node
-Label
 TextureProgressBar
 ProgressBar
 Control
-TextureRect
 CanvasLayer
 Button
 Container
