@@ -229,7 +229,7 @@ The Great Valley lies beyond this point.
 We must request of you a boon. We seek three sacred
 relics to help us fend off the monsters from the hills.
 Return to me once you have:
-- The Sacred Scales of Strength in the Great Arena
+- The Sacred Scales of Strength from the Great Arena
 - The Tears of the Old Ones from the Eastern Bald 
 Mountain
 - A Brew of Fortitude from the Witch in the North"

@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://cx2s3ukylpsdc"]
+[gd_scene load_steps=14 format=3 uid="uid://cx2s3ukylpsdc"]
 
+[ext_resource type="Script" path="res://scripts/ui_scripts/win_screen.gd" id="1_6fgsg"]
 [ext_resource type="Texture2D" uid="uid://bdasvcsbvmpt6" path="res://assets/scenery/backgrounds/sky.png" id="1_xktjw"]
 [ext_resource type="Texture2D" uid="uid://dikwcct0qbp5x" path="res://assets/scenery/backgrounds/clouds.png" id="2_k8wk2"]
 [ext_resource type="Texture2D" uid="uid://cdjb8lqllqn1q" path="res://assets/scenery/backgrounds/far_mountains.png" id="3_s60eb"]
@@ -26,6 +27,7 @@ font_size = 64
 font_size = 8
 
 [node name="win_screen" type="Node2D"]
+script = ExtResource("1_6fgsg")
 
 [node name="Sky" type="Sprite2D" parent="."]
 position = Vector2(-610, 458)
@@ -102,3 +104,5 @@ label_settings = SubResource("LabelSettings_70hh4")
 layout_mode = 2
 text = "Title Menu
 "
+
+[connection signal="pressed" from="EndScreen/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/TitleMenuButton" to="." method="_on_title_menu_button_pressed"]

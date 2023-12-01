@@ -52,3 +52,4 @@ res://scenes/ui_scenes/tears.tscn
 res://scripts/ui_scripts/tears.gd
 res://scenes/ui_scenes/win_screen.tscn
 res://scenes/dale_scenes/dale_autoload.tscn
+res://scripts/ui_scripts/win_screen.gd
